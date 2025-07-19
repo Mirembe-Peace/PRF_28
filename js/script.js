@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { PointerLockControls } from '/js/PointerLockControls.js';   
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'; 
+import TouchControls from './TouchControls.js'
 
 //setting up the scene
 const scene = new THREE.Scene();
@@ -161,41 +161,29 @@ function updateMovement(delta) {
 
 //mobile controls
 let controls;
-function setupMobileControls() {
-    controls = new PointerLockControls(camera, canvas);
-    scene.add(controls.getObject());
-
-    controls.lock();
-
-
+function addControls() {
+    let options = {
+        delta: 0.75,           // coefficient of movement
+        moveSpeed: 0.5,        // speed of movement
+        rotationSpeed: 0.002,  // coefficient of rotation
+        maxPitch: 55,          // max camera pitch angle
+        hitTest: true,         // stop on hitting objects
+        hitTestDistance: 40    // distance to test for hit
+    }
+    controls = new TouchControls(container.parentNode, camera, options);
+    controls.setPosition(0, 25, 400);
+    controls.addToScene(scene);
+    // controls.setRotation(0.15, -0.15)
 }
 
-function updateMotion(delta) {
-    const actualMoveSpeed = moveSpeed * delta;
-    
-    if (movement.forward) {
-        controls.moveForward(actualMoveSpeed);
-    }
-    if (movement.backward) {
-        controls.moveForward(-actualMoveSpeed);
-    }
-    if (movement.left) {
-        controls.moveRight(-actualMoveSpeed);
-    }
-    if (movement.right) {
-        controls.moveRight(actualMoveSpeed);
-    }
-}
-
-
-// Modify your initialization
 function initControls() {
     if (!isMobile){
         setupMouseLock();
         setupKeyboardControls();
         }
+        
     else{
-        setupMobileControls();
+         addControls();
         }
     }
         
@@ -317,10 +305,6 @@ function createExhibitHotspots() {
 function showExhibit(data) {
     closeExhibit();
 
-    if (controls.isLocked) {
-        controls.unlock();
-    }
-
     // Populate UI first
     exhibitTitle.textContent = data.title;
     exhibitDescription.textContent = data.description;
@@ -337,10 +321,6 @@ function closeExhibit(event) {
         currentExhibit = null;
     // Hide UI
     exhibitUI.style.display = 'none';
-
-    if (!isMobile) {
-        controls.lock();
-    }
 }
 
 const mouse = new THREE.Vector2();
@@ -403,9 +383,6 @@ window.addEventListener('resize', () => {
 
 //for the pictures
 function showYouTubeVideo(videoId, title, description) {
-    if (controls.isLocked) {
-        controls.unlock();
-    }
     // Create or show video container
     let videoContainer = document.getElementById('video-container');
     
@@ -488,9 +465,6 @@ function showYouTubeVideo(videoId, title, description) {
 
 //for the models
 function showYouTubeVideo_1(videoId) {
-    if (controls.isLocked) {
-        controls.unlock();
-    }
     // Create or show video container
     let videoContainer = document.getElementById('video-container');
     
@@ -753,8 +727,8 @@ function animate(){
     if (isMouseLocked) {
         updateMovement(delta);
     }
-     if (controls.isLocked) {
-        updateMotion(delta);
+    if(isMobile) {
+        controls.update()
     }
     renderer.render(scene, camera);
     requestAnimationFrame(animate);
