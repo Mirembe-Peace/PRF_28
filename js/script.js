@@ -37,6 +37,30 @@ pmremGenerator.compileEquirectangularShader();
 //device identification
 const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
+//loader
+function updateLoadingProgress(progress) {
+    const percentage = Math.round(progress * 100);
+    document.getElementById('loading-percentage').textContent = percentage;
+    document.getElementById('progress-bar-fill').style.width = `${percentage}%`;
+
+    if (percentage >= 100) {
+        setTimeout(() => {
+            document.querySelector('.loading-screen').classList.add('fade-out');
+        }, 500);
+    }
+}
+
+const loadingManager = new THREE.LoadingManager(
+    () => {
+        // When all assets are loaded
+        updateLoadingProgress(1);
+    },
+    (item, loaded, total) => {
+        // Progress update
+        updateLoadingProgress(loaded / total);
+    }
+);
+
 //controls
 
 //desktop controls
@@ -521,30 +545,6 @@ function showYouTubeVideo_1(videoId) {
     iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
     
 }
-
-function updateLoadingProgress(progress) {
-    const percentage = Math.round(progress * 100);
-    document.getElementById('loading-percentage').textContent = percentage;
-    document.getElementById('progress-bar-fill').style.width = `${percentage}%`;
-
-    if (percentage >= 100) {
-        setTimeout(() => {
-            document.querySelector('.loading-screen').classList.add('fade-out');
-        }, 500);
-    }
-}
-
-const loadingManager = new THREE.LoadingManager(
-    () => {
-        // When all assets are loaded
-        updateLoadingProgress(1);
-    },
-    (item, loaded, total) => {
-        // Progress update
-        updateLoadingProgress(loaded / total);
-    }
-);
-
 
 //instruction panel
 
