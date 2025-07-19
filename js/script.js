@@ -37,10 +37,10 @@ pmremGenerator.compileEquirectangularShader();
 const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
 //controls
-let controls;
-function keyBoardControls(){
+// let controls;
+// function keyBoardControls(){
 
-}
+// }
 
 //loading the model and texture
 function loadMuseum(){
@@ -175,10 +175,6 @@ function closeExhibit(event) {
         currentExhibit = null;
     // Hide UI
     exhibitUI.style.display = 'none';
-
-    if (!isMobile && !isMouseLocked && document.pointerLockElement !== canvas) {
-        canvas.requestPointerLock();
-    }
 }
 
 const mouse = new THREE.Vector2();
