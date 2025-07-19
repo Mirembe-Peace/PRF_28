@@ -13,7 +13,8 @@ camera.position.set(84, 45, 288);
 
 //setting upvthe canvas
 const canvas = document.querySelector('.canvas');
-const container = document.querySelector('.canvas') || document.body;
+const container = document.getElementById('container3d');
+container = document.querySelector('.canvas') || document.body;
 
 //setting up the renderer
 const renderer = new THREE.WebGLRenderer({canvas: canvas});
@@ -189,7 +190,7 @@ let controls;
 function addControls() {
     let options = {
         delta: 0.75,           // coefficient of movement
-        moveSpeed: 0.5,        // speed of movement
+        moveSpeed: 0.9,        // speed of movement
         rotationSpeed: 0.002,  // coefficient of rotation
         maxPitch: 55,          // max camera pitch angle
         hitTest: true,         // stop on hitting objects
