@@ -68,6 +68,14 @@ html, body {
     margin-bottom: 20px;
 }
 
+.welcome-sign {
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    margin-top: 20px;
+
+}
+
 .loading-progress {
     color: white;
     font-family: Arial, sans-serif;

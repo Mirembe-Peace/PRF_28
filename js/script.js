@@ -82,10 +82,8 @@ else{
 let exhibitHotspots = [];
 let isAnimating = false;
 let currentExhibit = null;
-const audioLoader = new THREE.AudioLoader();
-const listener = new THREE.AudioListener();
-camera.add(listener);
-const sound = new THREE.Audio(listener);
+
+
 const raycaster = new THREE.Raycaster( new THREE.Vector3());
 
 const exhibitUI = document.createElement('div');
@@ -161,16 +159,6 @@ function showExhibit(data) {
     exhibitTitle.textContent = data.title;
     exhibitDescription.textContent = data.description;
     exhibitUI.style.display = 'block';
-            
-            // Load and play sound
-            audioLoader.load(data.soundPath, (buffer) => {
-                sound.setBuffer(buffer);
-                sound.setLoop(false);
-                sound.setVolume(0.5);
-                sound.play();
-                currentExhibit.sound = sound;
-                
-            });
 }
 
 function closeExhibit(event) {
@@ -179,12 +167,7 @@ function closeExhibit(event) {
         event.preventDefault();
     }
         
-        // Stop sound
-    if (currentExhibit.sound) {
-            currentExhibit.sound.stop();
-            currentExhibit.sound.disconnect();
-        }
-        
+
         currentExhibit = null;
     // Hide UI
     exhibitUI.style.display = 'none';
@@ -371,83 +354,66 @@ const instructionContent = document.getElementById('instruction-content');
 //hotspot data
 const hotspotData = [
         {
-            soundPath: 'https://storage.googleapis.com/pearl-artifacts-cdn/museum_model/audio_8.mp3',
             title: "Ankle Rattles",
             description: "These are ankle rattles for wearing on the unkles to enhance the sound of music at celebrations like marriages and royal fuctions."
         },
         {
-            soundPath: 'https://storage.googleapis.com/pearl-artifacts-cdn/museum_model/audio_4.mp3',
             title: "Axe",
             description: "This is a male traditional hoe called Eligo. It is held by the chief to show leadersip and was used as awar tool."
         },
         {
-            soundPath: 'https://storage.googleapis.com/pearl-artifacts-cdn/museum_model/audio_3.mp3',
             title: "Bow",
             description: "Bow model."
         },
         {
-            soundPath: 'https://storage.googleapis.com/pearl-artifacts-cdn/museum_model/audio_3.mp3',
             title: "Elegu",
             description: "The is also called Eligo it is the female one held by the chiefs wife as a symbol of leadership also used in war.."
         },
         {
-
-            soundPath: 'https://storage.googleapis.com/pearl-artifacts-cdn/museum_model/audio_6.mp3',
             title: "Goat sack",
             description: "This is a goat's hide, during the Kebu medieval times it was used as a carrying suck. When an elder went to visit and there was leftover food, it would be parked in this suck for him to take back with him."
         },
         {
-            soundPath: 'https://storage.googleapis.com/pearl-artifacts-cdn/museum_model/audio_6.mp3',
             title: "Kebu Horn",
             description: "These horns are found in the neck of every Kebu man. They are for signaling danger or general mobilization depending on the pattern of how they are being blown."
         },
         {
-            soundPath: 'https://storage.googleapis.com/pearl-artifacts-cdn/museum_model/audio_6.mp3',
             title: "Kebu Pot",
             description: "The pot is a very important commodity to the Kebu society and home. The Kebu people never used iron to cook. Clay pots were used for cooking, collecting water and preserving food itself."
         },
         {
-            soundPath: 'https://storage.googleapis.com/pearl-artifacts-cdn/museum_model/audio_6.mp3',
             title: "Miya Skin",
             description: "This is a Miya cat skin, it is one of the Kebu people's artifacts. It used to be used to ward away epidemics that broke out during medieval times. It used to be waved by the chief as he cast out sickness from his land."
         },
         {
-            soundPath: 'https://storage.googleapis.com/pearl-artifacts-cdn/museum_model/audio_8.mp3',
             title: "Enanga",
             description: "Is an instrument that the Batwa used to play after a succfesful hunt. it is made of a flattended wooden slade with nylon or animal skin cut into stings and tied from end to end horizontally to produce different pitches when played. "
         },
         {
-            soundPath: 'https://storage.googleapis.com/pearl-artifacts-cdn/museum_model/audio_8.mp3',
             title: "Ogorogogo",
             description: "This is a farming tool used by the Ukebhu for harrowing, it is called Agorogoro. It normally has got an iron fixed on its sharp end."
         },
         {
-            soundPath: 'https://storage.googleapis.com/pearl-artifacts-cdn/museum_model/audio_2.mp3',
             title: "Shaker",
             description: "This is a shaker made out of calabash. It is used to evoc spirits of the ancestors. But now its used as a music instrument."
         },
         {
-            soundPath: 'https://storage.googleapis.com/pearl-artifacts-cdn/museum_model/audio_2.mp3',
             title: "Sticks",
             description: "These are sticks called Imirosho used by the Batwa in cultural dances and performances. They are used for drumming or as dance props."
         },
         {
-            soundPath: 'https://storage.googleapis.com/pearl-artifacts-cdn/museum_model/audio_2.mp3',
             title: "Ikumbi (Thumb Piano)",
             description: "This is a wooden box instrument found in the Batwa community like in most Ugandan cultures, it has a box wooden body and metal pokes tied to its neck in diferent pitches. Its played using both thumb fingers to create sound."
         },
         {
-            soundPath: 'https://storage.googleapis.com/pearl-artifacts-cdn/museum_model/audio_2.mp3',
             title: "Thumb Piano",
             description: "The Lukembe is one of the musical instrumenets of the Ukebhu, it is made of a sqaure wooden box and metallic pokes tided to its neck with different pitches. Lekembe is played using two finger thumbs by strumming the pokes rythmically to create sound."
         },
         {
-            soundPath: 'https://storage.googleapis.com/pearl-artifacts-cdn/museum_model/audio_6.mp3',
             title: "Vaccum",
             description: "This is a food warmer called Abhoro. It is used to keep food fresh and warm."
         },
         {
-            soundPath: 'https://storage.googleapis.com/pearl-artifacts-cdn/museum_model/audio_2.mp3',
             title: "Umunahi",
             description: "This is an istrument found among the Batwa, it is used for playing music while telling stories at the fire place. It is made of out of  Macademia nut tree branches and a gourd at the bottom to creat low end sound."
         }
