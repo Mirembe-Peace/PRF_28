@@ -24,7 +24,6 @@ html, body {
 
 #instructionBbutton {
     position: fixed;
-    display: block;
     top: 20px;
     left: 20px;
     background-color: rgba(0, 0, 0, 0.7);

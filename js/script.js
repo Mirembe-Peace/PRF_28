@@ -399,6 +399,7 @@ const loadingManager = new THREE.LoadingManager(
 //instruction panel
 
 const instructionButton = document.getElementById("instructionButton");
+    instructionButton.style.display = 'block';
 const instructionContent = document.getElementById('instruction-content');
     instructionButton.addEventListener('click', () => {
         if (instructionContent.style.display === 'none') {
