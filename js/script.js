@@ -578,7 +578,7 @@ function animate(){
 animate();
 
 //additional functions
-document.addEventListener('DOMContentLoader', function() {
+document.addEventListener('DOMContentLoaded', function() {
     if(instructionContent) {
         instructionContent.style.display = 'flex';
         document.getElementById('close-instructions').addEventListener('click', function() {
