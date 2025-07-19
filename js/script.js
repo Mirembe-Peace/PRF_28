@@ -145,7 +145,7 @@ function createExhibitHotspots() {
             opacity: 0.3 // Completely invisible
         });
         const sphere = new THREE.Mesh(geometry, material);
-        sphere.position.copy(data.position)
+        sphere.position.copy(data.position);
         sphere.userData = { exhibitData: data };
         scene.add(sphere);
         
