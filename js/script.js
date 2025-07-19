@@ -1,7 +1,6 @@
 import * as THREE from 'three';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { FirstPersonControls } from 'three/addons/controls/FirstPersonControls.js';
 
 //setting up the scene
 const scene = new THREE.Scene();
@@ -37,6 +36,11 @@ pmremGenerator.compileEquirectangularShader();
 //device identification
 const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
+//controls
+function keyBoardControls(){
+    
+}
+
 //loading the model and texture
 function loadMuseum(){
     const gltfLoader = new GLTFLoader(loadingManager);
@@ -51,7 +55,6 @@ function loadMuseum(){
 
             createExhibitHotspots();
             createPictureHotspots();
-            fpsControls();
         },
         function ( xhr ) {
             console.log( (xhr.loaded / xhr.total * 100 ) + '% loaded');
@@ -334,6 +337,7 @@ const loadingManager = new THREE.LoadingManager(
 
 //instruction panel
 const instructionButton = document.getElementById("instructionButton");
+const instructionContent = document.getElementById('instruction-content');
     instructionButton.addEventListener('click', () => {
         if (instructionContent.style.display === 'none') {
             
@@ -342,13 +346,16 @@ const instructionButton = document.getElementById("instructionButton");
     });
 
         // Close instructions when button is clicked
-const instructionContent = document.getElementById('instruction-content');
         instructionContent?.addEventListener('click', (e) => {
         if (e.target.id === 'close-instructions') {
              e.stopPropagation();
             instructionContent.style.display = 'none';
         }
         
+    });
+//home button functionality
+homeButton.addEventListener('click', () => {
+        window.location.href = 'https://pearlrhythmfoundation.org/category/art-archive/';
     });
 
 //hotspot data
@@ -470,17 +477,7 @@ const pictureHotspotData = [
     }
 ];
 
-//controls
-
-function fpsControls() {
-const controls = new FirstPersonControls(camera, canvas);
-controls.activeLook = true;
-controls.autoForward = false;
-controls.constrainVertical = false;
-controls.lookVertical = true;
-controls.lookSpeed = 0.005;
-scene.add(camera);
-}
+//animate function
 
 function animate(){
     renderer.render(scene, camera);
@@ -489,5 +486,13 @@ function animate(){
 
 animate();
 
-
+//additional functions
+document.addEventListener('DOMContentLoader', function() {
+    if(instructionContent) {
+        instructionContent.style.display = 'flex';
+        document.getElementById('close-instructions').addEventListener('click', function() {
+            instructionContent.style.display = 'none'
+        });
+    }
+});
 
