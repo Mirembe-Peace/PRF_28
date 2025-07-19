@@ -197,7 +197,7 @@ function addControls() {
     }
     
     controls = new TouchControls(container.parentNode, camera, options);
-    controls.setPosition(0, 25, 400);
+    controls.setPosition(84, 45, 288);
     controls.addToScene(scene);
     // controls.setRotation(0.15, -0.15)
 }

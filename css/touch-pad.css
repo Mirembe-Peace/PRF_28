@@ -3,11 +3,11 @@ body {
 }
 
 .rotation-pad {
-	position: absolute;
+	position: fixed;
 }
 
 .rotation-pad .region {
-	position: absolute;
+	position: fixed;
 	width: 100px;
 	height: 100px;
 	background: radial-gradient(rgba(218, 225, 230, 0.25) 5%, rgba(218, 225, 230, 0.50) 95%),
@@ -35,11 +35,11 @@ body {
 }
 
 .movement-pad {
-	position: absolute;
+	position: fixed;
 }
 
 .movement-pad .region {
-	position: absolute;
+	position: fixed;
 	width: 100px;
 	height: 100px;
 	background: radial-gradient(rgba(218, 225, 230, 0.25) 5%, rgba(218, 225, 230, 0.50) 95%),
@@ -52,7 +52,7 @@ body {
 
 .movement-pad .handle {
 	opacity: 0.1;
-	position: absolute;
+	position: fixed;
 	height: 30px;
 	width: 30px;
 	top: 0px;
