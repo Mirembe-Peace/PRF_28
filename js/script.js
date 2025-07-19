@@ -13,6 +13,7 @@ camera.position.set(84, 45, 288);
 
 //setting upvthe canvas
 const canvas = document.querySelector('.canvas');
+const container = document.querySelector('.canvas') || document.body;
 
 //setting up the renderer
 const renderer = new THREE.WebGLRenderer({canvas: canvas});
@@ -185,7 +186,6 @@ function updateMovement(delta) {
 
 //mobile controls
 let controls;
-let container;
 function addControls() {
     let options = {
         delta: 0.75,           // coefficient of movement
@@ -215,7 +215,7 @@ function initControls() {
         
 //loading the model and texture
 function loadMuseum(){
-    const gltfLoader = new GLTFLoader(loadingManager, container);
+    const gltfLoader = new GLTFLoader(loadingManager);
 
     gltfLoader.load(
         'https://storage.googleapis.com/pearl-artifacts-cdn/museum_test_1blend.gltf',
@@ -729,7 +729,7 @@ function animate(){
     if (isMouseLocked) {
         updateMovement(delta);
     }
-    if(isMobile) {
+    if(isMobile && controls) {
         controls.update()
     }
     renderer.render(scene, camera);
