@@ -1,9 +1,9 @@
 .rotation-pad {
-	position: fixed;
+	position: absolute;
 }
 
 .rotation-pad .region {
-	position: fixed;
+	position: absolute;
 	width: 100px;
 	height: 100px;
 	background: radial-gradient(rgba(218, 225, 230, 0.25) 5%, rgba(218, 225, 230, 0.50) 95%),
@@ -31,11 +31,11 @@
 }
 
 .movement-pad {
-	position: fixed;
+	position: absolute;
 }
 
 .movement-pad .region {
-	position: fixed;
+	position: absolute;
 	width: 100px;
 	height: 100px;
 	background: radial-gradient(rgba(218, 225, 230, 0.25) 5%, rgba(218, 225, 230, 0.50) 95%),
@@ -48,7 +48,7 @@
 
 .movement-pad .handle {
 	opacity: 0.1;
-	position: fixed;
+	position: absolute;
 	height: 30px;
 	width: 30px;
 	top: 0px;

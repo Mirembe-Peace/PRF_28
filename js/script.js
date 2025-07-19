@@ -207,10 +207,6 @@ function initControls() {
         setupMouseLock();
         setupKeyboardControls();
         }
-        
-    else{
-         addControls();
-        }
     }
         
 //loading the model and texture
@@ -228,6 +224,9 @@ function loadMuseum(){
             createExhibitHotspots();
             createPictureHotspots();
             initControls();
+            if(isMobile){
+                addControls();
+            }
         },
         function ( xhr ) {
             console.log( (xhr.loaded / xhr.total * 100 ) + '% loaded');
