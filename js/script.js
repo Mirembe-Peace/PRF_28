@@ -185,6 +185,7 @@ function updateMovement(delta) {
 
 //mobile controls
 let controls;
+let container;
 function addControls() {
     let options = {
         delta: 0.75,           // coefficient of movement
@@ -194,6 +195,7 @@ function addControls() {
         hitTest: true,         // stop on hitting objects
         hitTestDistance: 40    // distance to test for hit
     }
+    
     controls = new TouchControls(container.parentNode, camera, options);
     controls.setPosition(0, 25, 400);
     controls.addToScene(scene);
