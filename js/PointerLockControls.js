@@ -2,7 +2,7 @@ import {
 	Euler,
 	EventDispatcher,
 	Vector3
-} from "three";
+} from 'three';
 
 	var mobile 
 	mobile = false;
