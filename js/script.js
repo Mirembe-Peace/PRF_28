@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { PointerLockControls } from '/PointerLockControls.js';   
+import { PointerLockControls } from '/js/PointerLockControls.js';   
 
 //setting up the scene
 const scene = new THREE.Scene();
