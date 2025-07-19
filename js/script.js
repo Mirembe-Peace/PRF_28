@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { PointerLockControls } from './PointerLockControls';    
 
 //setting up the scene
 const scene = new THREE.Scene();
@@ -37,7 +38,8 @@ pmremGenerator.compileEquirectangularShader();
 const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
 //controls
-// let controls;
+
+//desktop controls
 const moveSpeed = 30;
 const lookSpeed = 0.002;
 const verticalLookLimit = Math.PI / 3; // Limit vertical look angle
@@ -54,8 +56,6 @@ const movement = {
 
 // Mouse movement variables
 let isMouseLocked = false;
-let previousMouseX = 0;
-let previousMouseY = 0;
 
 // Setup mouse lock
 function setupMouseLock() {
@@ -159,16 +159,45 @@ function updateMovement(delta) {
 
 }
 
+//mobile controls
+let controls;
+function setupMobileControls() {
+    controls = new PointerLockControls(camera, canvas);
+    scene.add(controls.getObject());
 
-        // Modify your initialization
-        function initControls() {
-            if (!isMobile)
- {
-                setupMouseLock();
-                setupKeyboardControls();
-            }
+    controls.lock();
+
+
+}
+
+function updateMotion(delta) {
+    const actualMoveSpeed = moveSpeed * delta;
+    
+    if (movement.forward) {
+        controls.moveForward(actualMoveSpeed);
+    }
+    if (movement.backward) {
+        controls.moveForward(-actualMoveSpeed);
+    }
+    if (movement.left) {
+        controls.moveRight(-actualMoveSpeed);
+    }
+    if (movement.right) {
+        controls.moveRight(actualMoveSpeed);
+    }
+}
+
+
+// Modify your initialization
+function initControls() {
+    if (!isMobile){
+        setupMouseLock();
+        setupKeyboardControls();
         }
-
+    else{
+        setupMobileControls();
+        }
+    }
         
 //loading the model and texture
 function loadMuseum(){
@@ -288,6 +317,10 @@ function createExhibitHotspots() {
 function showExhibit(data) {
     closeExhibit();
 
+    if (controls.isLocked) {
+        controls.unlock();
+    }
+
     // Populate UI first
     exhibitTitle.textContent = data.title;
     exhibitDescription.textContent = data.description;
@@ -304,12 +337,20 @@ function closeExhibit(event) {
         currentExhibit = null;
     // Hide UI
     exhibitUI.style.display = 'none';
+
+    if (!isMobile) {
+        controls.lock();
+    }
 }
 
 const mouse = new THREE.Vector2();
 
 function onMouseClick(event) {
     if (isAnimating || exhibitUI.style.display === 'block' || document.getElementById('video-container')) return;
+    
+    // For mobile, we don't want to trigger exhibits when just moving the camera
+    if (isMobile && !event.target.classList.contains('exhibit-hotspot'))return;
+
     
     mouse.x = (event.clientX / renderer.domElement.clientWidth) * 2 - 1;
     mouse.y = - (event.clientY / renderer.domElement.clientHeight) * 2 + 1;
@@ -362,6 +403,9 @@ window.addEventListener('resize', () => {
 
 //for the pictures
 function showYouTubeVideo(videoId, title, description) {
+    if (controls.isLocked) {
+        controls.unlock();
+    }
     // Create or show video container
     let videoContainer = document.getElementById('video-container');
     
@@ -444,6 +488,9 @@ function showYouTubeVideo(videoId, title, description) {
 
 //for the models
 function showYouTubeVideo_1(videoId) {
+    if (controls.isLocked) {
+        controls.unlock();
+    }
     // Create or show video container
     let videoContainer = document.getElementById('video-container');
     
@@ -705,6 +752,9 @@ function animate(){
 
     if (isMouseLocked) {
         updateMovement(delta);
+    }
+     if (controls.isLocked) {
+        updateMotion(delta);
     }
     renderer.render(scene, camera);
     requestAnimationFrame(animate);
