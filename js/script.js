@@ -38,10 +38,138 @@ const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
 //controls
 // let controls;
-// function keyBoardControls(){
+const moveSpeed = 30;
+const lookSpeed = 0.002;
+const verticalLookLimit = Math.PI / 3; // Limit vertical look angle
 
-// }
+// Movement state
+const movement = {
+    forward: false,
+    backward: false,
+    left: false,
+    right: false,
+    up: false,
+    down: false
+};
 
+// Mouse movement variables
+let isMouseLocked = false;
+let previousMouseX = 0;
+let previousMouseY = 0;
+
+// Setup mouse lock
+function setupMouseLock() {
+    document.addEventListener('click', () => {
+        if (!isMouseLocked) {
+            canvas.requestPointerLock = canvas.requestPointerLock || 
+                                       canvas.mozRequestPointerLock || 
+                                       canvas.webkitRequestPointerLock;
+            canvas.requestPointerLock();
+        }
+    });
+
+    document.addEventListener('pointerlockchange', lockChangeAlert, false);
+    document.addEventListener('mozpointerlockchange', lockChangeAlert, false);
+    document.addEventListener('webkitpointerlockchange', lockChangeAlert, false);
+
+    function lockChangeAlert() {
+        if (document.pointerLockElement === canvas || 
+            document.mozPointerLockElement === canvas || 
+            document.webkitPointerLockElement === canvas) {
+            if (exhibitUI.style.display === 'block' || document.getElementById('video-container')) {
+                document.exitPointerLock();
+                return;
+            }
+            isMouseLocked = true;
+            document.addEventListener('mousemove', onMouseMove, false);
+        } 
+        else {
+            isMouseLocked = false;
+            document.removeEventListener('mousemove', onMouseMove, false);
+        }
+    }
+}
+
+// Mouse movement handler
+function onMouseMove(e) {
+    if (!isMouseLocked) return;
+
+    const movementX = e.movementX || e.mozMovementX || e.webkitMovementX || 0;
+    const movementY = e.movementY || e.mozMovementY || e.webkitMovementY || 0;
+
+    // Horizontal rotation (left/right)
+    camera.rotation.y -= movementX * lookSpeed;
+
+    // Limit vertical rotation to prevent over-rotation
+    camera.rotation.x = Math.max(-verticalLookLimit, Math.min(verticalLookLimit, camera.rotation.x));
+}
+
+// Keyboard controls - ARROW KEYS ONLY
+function setupKeyboardControls() {
+    document.addEventListener('keydown', (e) => {
+        switch (e.key) {
+            case 'ArrowUp': 
+                movement.forward = true; 
+                e.preventDefault(); // Prevent default browser behavior (like scrolling)
+                break;
+            case 'ArrowDown': 
+                movement.backward = true; 
+                e.preventDefault();
+                break;
+            case 'ArrowLeft': 
+                movement.left = true; 
+                e.preventDefault();
+                break;
+            case 'ArrowRight': 
+                movement.right = true; 
+                e.preventDefault();
+                break;
+        }
+    });
+
+    document.addEventListener('keyup', (e) => {
+        switch (e.key) {
+            case 'ArrowUp': movement.forward = false; break;
+            case 'ArrowDown': movement.backward = false; break;
+            case 'ArrowLeft': movement.left = false; break;
+            case 'ArrowRight': movement.right = false; break;
+        }
+    });
+}
+
+// Movement update function
+function updateMovement(delta) {
+    const actualMoveSpeed = moveSpeed * delta;
+
+    // Forward/backward movement
+    if (movement.forward) {
+        camera.translateZ(-actualMoveSpeed);
+    }
+    if (movement.backward) {
+        camera.translateZ(actualMoveSpeed);
+    }
+
+    // Left/right movement
+    if (movement.left) {
+        camera.translateX(-actualMoveSpeed);
+    }
+    if (movement.right) {
+        camera.translateX(actualMoveSpeed);
+    }
+
+}
+
+
+        // Modify your initialization
+        function initControls() {
+            if (!isMobile)
+ {
+                setupMouseLock();
+                setupKeyboardControls();
+            }
+        }
+
+        
 //loading the model and texture
 function loadMuseum(){
     const gltfLoader = new GLTFLoader(loadingManager);
@@ -56,6 +184,7 @@ function loadMuseum(){
 
             createExhibitHotspots();
             createPictureHotspots();
+            initControls();
         },
         function ( xhr ) {
             console.log( (xhr.loaded / xhr.total * 100 ) + '% loaded');
@@ -568,8 +697,15 @@ const pictureHotspotData = [
 ];
 
 //animate function
+let clock = new THREE.Clock();
+let delta = 0;
 
 function animate(){
+    delta = clock.getDelta()
+
+    if (isMouseLocked) {
+        updateMovement(delta);
+    }
     renderer.render(scene, camera);
     requestAnimationFrame(animate);
 }
