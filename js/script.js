@@ -395,12 +395,6 @@ const loadingManager = new THREE.LoadingManager(
     }
 );
 
-//instruction panel
-   if (isMobile) {
-        document.getElementById('desktop-instructions').style.display = 'none';
-    } else {
-        document.getElementById('mobile-instructions').style.display = 'none';
-    }
 
 const instructionButton = document.getElementById("instructionButton");
 const instructionContent = document.getElementById('instruction-content');
