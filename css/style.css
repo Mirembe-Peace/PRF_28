@@ -31,7 +31,7 @@ html, body {
     padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
-    z-index: 1000;
+    z-index: 10001;
     font-family: Arial, sans-serif;
     font-size: 14px;
     transition: background-color 0.3s;
@@ -269,4 +269,14 @@ html, body {
     max-width: 80%;
     max-height: 80%;
     overflow: auto;
+}
+
+/* Hide mobile instructions by default on desktop */
+@media (min-width: 768px) {
+    #mobile-instructions { display: none; }
+}
+
+/* Hide desktop instructions by default on mobile */
+@media (max-width: 767px) {
+    #desktop-instructions { display: none; }
 }
