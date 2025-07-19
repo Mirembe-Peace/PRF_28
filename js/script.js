@@ -13,7 +13,7 @@ camera.position.set(84, 45, 288);
 
 //setting upvthe canvas
 const canvas = document.querySelector('.canvas');
-const container = document.getElementById('container3d');
+const container = document.querySelector('.canvas');
 
 //setting up the renderer
 const renderer = new THREE.WebGLRenderer({canvas: canvas});
@@ -200,16 +200,6 @@ function addControls() {
     controls.setPosition(84, 45, 288);
     controls.addToScene(scene);
     // controls.setRotation(0.15, -0.15)
-    canvas[0];
-    if (canvas) {
-        controls.rotationPad.alignAndConfigPad(canvas);
-    }
-    
-    window.addEventListener('resize', () => {
-        if (canvas) {
-            controls.rotationPad.alignAndConfigPad(canvas);
-        }
-    });
 }
 
 function initControls() {
