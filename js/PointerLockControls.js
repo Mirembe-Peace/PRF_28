@@ -1,8 +1,6 @@
-import {
-	Euler,
-	EventDispatcher,
-	Vector3
-} from 'three';
+import { Euler } from 'three';
+import { EventDispatcher } from 'three';
+import { Vector3 } from 'three';
 
 	var mobile 
 	mobile = false;
