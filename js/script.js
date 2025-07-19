@@ -200,7 +200,7 @@ function addControls() {
     controls.setPosition(84, 45, 288);
     controls.addToScene(scene);
     // controls.setRotation(0.15, -0.15)
-    const canvas = container.getElementsByTagName('canvas')[0];
+    canvas[0];
     if (canvas) {
         controls.rotationPad.alignAndConfigPad(canvas);
     }
