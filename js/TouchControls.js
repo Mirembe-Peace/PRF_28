@@ -110,6 +110,7 @@ class TouchControls {
         document.addEventListener('mouseout', (event) => this.onMouseOut(event))
 
         this.#prepareRotationMatrices()
+        this.resetHandlePosition()
     }
 
     //
