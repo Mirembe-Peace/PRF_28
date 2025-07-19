@@ -37,6 +37,7 @@ pmremGenerator.compileEquirectangularShader();
 const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
 //controls
+let controls;
 function keyBoardControls(){
 
 }
@@ -198,6 +199,7 @@ function onMouseClick(event) {
         const clickedHotspot = exhibitHotspots.find(h => h.mesh === exhibitIntersects[0].object);
         if (clickedHotspot) {
             showExhibit(clickedHotspot.exhibitData);
+            showYouTubeVideo_1(clickedPicture.userData.videoId);
         }
         else {
             console.warn("Clicked on an exhibit hotspot but no data found.");
@@ -232,6 +234,8 @@ window.addEventListener('resize', () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
+
+//for the pictures
 function showYouTubeVideo(videoId, title, description) {
     // Create or show video container
     let videoContainer = document.getElementById('video-container');
@@ -312,6 +316,66 @@ function showYouTubeVideo(videoId, title, description) {
     descElement.textContent = description;
 }
 
+
+//for the models
+function showYouTubeVideo_1(videoId, title, description) {
+    // Create or show video container
+    let videoContainer = document.getElementById('video-container');
+    
+    if (!videoContainer) {
+        videoContainer = document.createElement('div');
+        videoContainer.id = 'video-container';
+        videoContainer.style.position = 'fixed';
+        videoContainer.style.top = '50';
+        videoContainer.style.left = '50';
+        videoContainer.style.width = '50%';
+        videoContainer.style.height = '50%';
+        videoContainer.style.backgroundColor = 'rgba(0,0,0,0.9)';
+        videoContainer.style.zIndex = '1000';
+        videoContainer.style.display = 'flex';
+        videoContainer.style.flexDirection = 'column';
+        videoContainer.style.justifyContent = 'center';
+        videoContainer.style.alignItems = 'center';
+        
+        // Close button
+        const closeButton = document.createElement('button');
+        closeButton.textContent = 'Close';
+        closeButton.style.position = 'absolute';
+        closeButton.style.top = '20px';
+        closeButton.style.right = '20px';
+        closeButton.style.padding = '10px 20px';
+        closeButton.style.backgroundColor = '#333';
+        closeButton.style.color = 'white';
+        closeButton.style.border = 'none';
+        closeButton.style.borderRadius = '5px';
+        closeButton.style.cursor = 'pointer';
+        closeButton.style.zIndex = '1001';
+        closeButton.addEventListener('click', () => {
+            document.body.removeChild(videoContainer);
+        });
+        videoContainer.appendChild(closeButton);
+        
+        // YouTube iframe
+        const iframe = document.createElement('iframe');
+        iframe.id = 'youtube-iframe';
+        iframe.style.border = 'none';
+        iframe.style.width = '40%';
+        iframe.style.height = '30%';
+        iframe.style.maxWidth = '1200px';
+        iframe.allowFullscreen = true;
+        videoContainer.appendChild(iframe);
+        
+        document.body.appendChild(videoContainer);
+    } else {
+        videoContainer.style.display = 'flex';
+    }
+    
+    // Set the video source
+    const iframe = document.getElementById('youtube-iframe');
+    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+    
+}
+
 function updateLoadingProgress(progress) {
     const percentage = Math.round(progress * 100);
     document.getElementById('loading-percentage').textContent = percentage;
@@ -361,66 +425,93 @@ homeButton.addEventListener('click', () => {
 //hotspot data
 const hotspotData = [
         {
+            position: new THREE.Vector3(-40, 18, -165),
+            videoId: "ROmhZu5KGFs",
             title: "Ankle Rattles",
             description: "These are ankle rattles for wearing on the unkles to enhance the sound of music at celebrations like marriages and royal fuctions."
         },
         {
+            position: new THREE.Vector3(-100, -4, -500),
             title: "Axe",
             description: "This is a male traditional hoe called Eligo. It is held by the chief to show leadersip and was used as awar tool."
         },
         {
+            position: new THREE.Vector3(-100, 40, -510),
             title: "Bow",
             description: "Bow model."
         },
         {
+            position: new THREE.Vector3(-100, 90, -515),
             title: "Elegu",
             description: "The is also called Eligo it is the female one held by the chiefs wife as a symbol of leadership also used in war.."
         },
         {
+            position: new THREE.Vector3(-40, 18, -118),
+            videoId: "tqYXjbZ5fMg",
             title: "Goat sack",
             description: "This is a goat's hide, during the Kebu medieval times it was used as a carrying suck. When an elder went to visit and there was leftover food, it would be parked in this suck for him to take back with him."
         },
         {
+            position: new THREE.Vector3(-40, 20, -207),
+            videoId: "s1CQOoOQm3Q",
             title: "Kebu Horn",
             description: "These horns are found in the neck of every Kebu man. They are for signaling danger or general mobilization depending on the pattern of how they are being blown."
         },
         {
+            position: new THREE.Vector3(-250, 22, -151),
+            videoId: "S2n8MTmksk",
             title: "Kebu Pot",
             description: "The pot is a very important commodity to the Kebu society and home. The Kebu people never used iron to cook. Clay pots were used for cooking, collecting water and preserving food itself."
         },
         {
+            position: new THREE.Vector3(-40, 18, -30),
+            videoId: "nFYNBaL4xlU",
             title: "Miya Skin",
             description: "This is a Miya cat skin, it is one of the Kebu people's artifacts. It used to be used to ward away epidemics that broke out during medieval times. It used to be waved by the chief as he cast out sickness from his land."
         },
         {
+            position: new THREE.Vector3(202, 17, -194),
+            videoId: "z6iG4wFgZfc",
             title: "Enanga",
             description: "Is an instrument that the Batwa used to play after a succfesful hunt. it is made of a flattended wooden slade with nylon or animal skin cut into stings and tied from end to end horizontally to produce different pitches when played. "
         },
         {
+            position: new THREE.Vector3(-40, 20, -65),
             title: "Ogorogogo",
             description: "This is a farming tool used by the Ukebhu for harrowing, it is called Agorogoro. It normally has got an iron fixed on its sharp end."
         },
         {
+            position: new THREE.Vector3(-255, 25, -367),
+            videoId: "xH767Bwc3Q4",
             title: "Shaker",
             description: "This is a shaker made out of calabash. It is used to evoc spirits of the ancestors. But now its used as a music instrument."
         },
         {
+            position: new THREE.Vector3(211, 17, -60),
+            videoId: "LV0V9z2154w",
             title: "Sticks",
             description: "These are sticks called Imirosho used by the Batwa in cultural dances and performances. They are used for drumming or as dance props."
         },
         {
+            position: new THREE.Vector3(206, 20, -444),
+            videoId: "llJWRdh4zIc",
             title: "Ikumbi (Thumb Piano)",
             description: "This is a wooden box instrument found in the Batwa community like in most Ugandan cultures, it has a box wooden body and metal pokes tied to its neck in diferent pitches. Its played using both thumb fingers to create sound."
         },
         {
+            position: new THREE.Vector3(-52, 12, -336),
+            videoId: "llJWRdh4zIc",
             title: "Thumb Piano",
             description: "The Lukembe is one of the musical instrumenets of the Ukebhu, it is made of a sqaure wooden box and metallic pokes tided to its neck with different pitches. Lekembe is played using two finger thumbs by strumming the pokes rythmically to create sound."
         },
         {
+            position: new THREE.Vector3(-52, 12, 107),
             title: "Vaccum",
             description: "This is a food warmer called Abhoro. It is used to keep food fresh and warm."
         },
         {
+            position: new THREE.Vector3(10, -5, -115),
+            videoId: "nTJoZsTIsZg",
             title: "Umunahi",
             description: "This is an istrument found among the Batwa, it is used for playing music while telling stories at the fire place. It is made of out of  Macademia nut tree branches and a gourd at the bottom to creat low end sound."
         }
