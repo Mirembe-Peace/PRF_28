@@ -38,7 +38,7 @@ const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
 //controls
 function keyBoardControls(){
-    
+
 }
 
 //loading the model and texture
@@ -46,7 +46,7 @@ function loadMuseum(){
     const gltfLoader = new GLTFLoader(loadingManager);
 
     gltfLoader.load(
-        'https://storage.googleapis.com/pearl-artifacts-cdn/museum_model/museum_test_1blend.gltf',
+        'https://storage.googleapis.com/version_02_museum/museum_test_1blend.gltf',
         function (gltf) {
             const museum = gltf.scene;
             museum.position.set(0, 0, 0);
@@ -70,7 +70,7 @@ if(isMobile) {
 }
 else{
     new RGBELoader()
-    .setPath('https://storage.googleapis.com/pearl-artifacts-cdn/museum_model/')
+    .setPath('https://storage.googleapis.com/version_02_museum/')
     .load('environment.hdr', function (texture){
         texture.mapping = THREE.EquirectangularReflectionMapping;
         scene.background = texture;
