@@ -11,7 +11,7 @@ import { Vector3 } from 'three';
 
 	var h = window.innerHeight;
 
-	class PointerLockControls {
+	class PointerLockControls extends EventDispatcher {
 	constructor(camera, domElement) {
 
 		if (isMobile) { mobile = true; } else { mobile = false; }
@@ -130,6 +130,8 @@ import { Vector3 } from 'three';
 			vec.setFromMatrixColumn(camera.matrix, 0);
 			camera.position.addScaledVector(vec, distance);
 		};
+
+		super();
 
 		if (mobile == true) {
 			this.lock = function () {
