@@ -273,10 +273,10 @@ html, body {
 
 /* Hide mobile instructions by default on desktop */
 @media (min-width: 768px) {
-    #mobile-instructions { display: none; }
+    #for-mobile { display: none; }
 }
 
 /* Hide desktop instructions by default on mobile */
 @media (max-width: 767px) {
-    #desktop-instructions { display: none; }
+    #for-desktop { display: none; }
 }
