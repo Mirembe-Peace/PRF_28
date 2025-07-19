@@ -314,7 +314,7 @@ function showYouTubeVideo(videoId, title, description) {
 
 
 //for the models
-function showYouTubeVideo_1(videoId, title, description) {
+function showYouTubeVideo_1(videoId) {
     // Create or show video container
     let videoContainer = document.getElementById('video-container');
     
@@ -576,7 +576,7 @@ animate();
 //additional functions
 document.addEventListener('DOMContentLoaded', function() {
     if(instructionContent) {
-        instructionContent.style.display = 'flex';
+        instructionContent.style.display = 'block';
         document.getElementById('close-instructions').addEventListener('click', function() {
             instructionContent.style.display = 'none'
         });
