@@ -195,7 +195,7 @@ function onMouseClick(event) {
         const clickedHotspot = exhibitHotspots.find(h => h.mesh === exhibitIntersects[0].object);
         if (clickedHotspot) {
             showExhibit(clickedHotspot.exhibitData);
-            showYouTubeVideo_1(clickedPicture.userData.videoId);
+            showYouTubeVideo_1(clickedHotspot.userData.videoId);
         }
         else {
             console.warn("Clicked on an exhibit hotspot but no data found.");
