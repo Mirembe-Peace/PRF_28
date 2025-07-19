@@ -215,7 +215,7 @@ function initControls() {
         
 //loading the model and texture
 function loadMuseum(){
-    const gltfLoader = new GLTFLoader(loadingManager);
+    const gltfLoader = new GLTFLoader(loadingManager, container);
 
     gltfLoader.load(
         'https://storage.googleapis.com/pearl-artifacts-cdn/museum_test_1blend.gltf',
