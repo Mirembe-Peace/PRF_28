@@ -413,7 +413,7 @@ function showYouTubeVideo(videoId, title, description) {
         videoContainer.id = 'video-container';
         videoContainer.style.position = 'fixed';
         videoContainer.style.bottom = '20px';
-        videoContainer.style.left = '40px';
+        videoContainer.style.left = '20px';
         videoContainer.style.width = '100%';
         videoContainer.style.height = '100%';
         videoContainer.style.backgroundColor = 'rgba(0,0,0,0.9)';
