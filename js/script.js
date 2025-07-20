@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'; 
-import TouchControls from './js/TouchControls.js'
+import TouchControls from './TouchControls.js'
 
 //device identification
 const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
