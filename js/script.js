@@ -367,19 +367,18 @@ function onMouseClick(event) {
     mouse.y = - (event.clientY / renderer.domElement.clientHeight) * 2 + 1;
     
     raycaster.setFromCamera(mouse, camera);
-    
-    // Check for exhibit hotspots
-    const allExhibitObjects = exhibitHotspots.map(h => h.mesh);
-    const exhibitIntersects = raycaster.intersectObjects(allExhibitObjects && scene.children.filter(obj => obj.userData.isHotspot));
+     // Check for exhibit hotspots
+    const exhibitIntersects = raycaster.intersectObjects(scene.children.filter(obj => obj.userData?.isHotspot));
     
     if (exhibitIntersects.length > 0) {
-        const clickedHotspot = exhibitHotspots.find(h => h.mesh === exhibitIntersects[0].object);
-        if (clickedHotspot) {
-            showExhibit(clickedHotspot.exhibitData);
-            showYouTubeVideo_1(clickedHotspot.userData.videoId);
-        }
-        else {
-            console.warn("Clicked on an exhibit hotspot but no data found.");
+        const clickedObject = exhibitIntersects[0].object;
+        const exhibitData = clickedObject.userData.exhibitData;
+        
+        if (exhibitData) {
+            showExhibit(exhibitData);
+            if (exhibitData.videoId) {  // Only show video if videoId exists
+                showYouTubeVideo_1(exhibitData.videoId);
+            }
         }
     }
 
