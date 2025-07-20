@@ -250,8 +250,8 @@ html, body {
             }
             #video-container {
                 position: fixed;
-                bottom: 60px;
-                left: 10px;
+                bottom: 90px;
+                left: 0;
                 background-color: rgba(0, 0, 0, 0.7);
                 padding: 20px;
                 border-radius: 10px;
