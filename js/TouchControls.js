@@ -1,5 +1,4 @@
 import * as THREE from 'three'
-import * as utils from './utils.js'
 import RotationPad from './RotationPad.js'
 import MovementPad from './MovementPad.js'
 
