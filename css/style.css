@@ -303,18 +303,6 @@ html, body {
 
 /* Mobile-specific styles for YouTube iframes */
 @media only screen and (max-width: 768px) {
-    #video-container {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        bottom: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
-        transform: none !important;
-        border-radius: 0 !important;
-        padding: 10px !important;
-        box-sizing: border-box !important;
-    }
     
     #youtube-iframe {
         width: 100% !important;
@@ -324,27 +312,18 @@ html, body {
     
     /* For the model videos container */
     #video-container[style*="width: 40%"] {
-        width: 95% !important;
-        left: 50% !important;
-        height: 40% !important;
+        width: 95% ;
+        left: 0;
+        top: 20px; 
+        height: 40%;
     }
     
     /* Adjust the close button for better mobile visibility */
     #video-container button {
-        padding: 8px 16px !important;
-        font-size: 14px !important;
-        top: 10px !important;
-        right: 10px !important;
+        padding: 8px 16px;
+        font-size: 14px ;
+        top: 10px ;
+        right: 10px ;
     }
     
-    /* Adjust text elements for mobile */
-    #video-container h2 {
-        font-size: 18px !important;
-        margin: 10px 0 !important;
-    }
-    
-    #video-container p {
-        font-size: 14px !important;
-        margin: 5px 10px !important;
-    }
 }
