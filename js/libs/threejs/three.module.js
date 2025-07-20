@@ -22978,7 +22978,7 @@ function WebGLTextures( _gl, extensions, state, properties, capabilities, utils,
 			_gl.pixelStorei( 37443, 0 );
 
 			const needsPowerOfTwo = textureNeedsPowerOfTwo( texture ) && isPowerOfTwo$1( texture.image ) === false;
-			let image = resizeImage( texture.image, needsPowerOfTwo, false, maxTextureSize );
+			//let image = resizeImage( texture.image, needsPowerOfTwo, false, maxTextureSize );
 			image = verifyColorSpace( texture, image );
 
 			const supportsMips = isPowerOfTwo$1( image ) || isWebGL2,
@@ -23343,11 +23343,12 @@ function WebGLTextures( _gl, extensions, state, properties, capabilities, utils,
 
 			for ( let i = 0; i < 6; i ++ ) {
 
-				if ( ! isCompressed && ! isDataTexture ) {
+				// if ( ! isCompressed && ! isDataTexture ) {
 
-					cubeImage[ i ] = resizeImage( texture.image[ i ], false, true, maxCubemapSize );
+				// 	cubeImage[ i ] = resizeImage( texture.image[ i ], false, true, maxCubemapSize );
 
-				} else {
+				// } else
+					if ( ! isCompressed && ! isDataTexture ) {
 
 					cubeImage[ i ] = isDataTexture ? texture.image[ i ].image : texture.image[ i ];
 
