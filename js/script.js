@@ -199,7 +199,7 @@ function addControls() {
         hitTestDistance: 40    // distance to test for hit
     }
     controls = new TouchControls(container.parentNode, camera, options);
-    controls.setPosition(84, 34, 40);
+    controls.setPosition(84, 34, 25);
     controls.addToScene(scene);
     
 }
