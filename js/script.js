@@ -13,7 +13,6 @@ camera.position.set(84, 45, 288);
 
 //setting upvthe canvas
 const canvas = document.querySelector('.canvas');
-const container = document.querySelector('.canvas');
 
 //setting up the renderer
 const renderer = new THREE.WebGLRenderer({canvas: canvas});
@@ -187,6 +186,8 @@ function updateMovement(delta) {
 //mobile controls
 let controls;
 function addControls() {
+
+    const container = document.querySelector('.canvas');
     let options = {
         delta: 0.75,           // coefficient of movement
         moveSpeed: 0.9,        // speed of movement
@@ -196,7 +197,7 @@ function addControls() {
         hitTestDistance: 40    // distance to test for hit
     }
     controls = new TouchControls(container.parentNode, camera, options);
-    controls.setPosition(84, 45, 288);
+    controls.setPosition(camera.position);
     controls.addToScene(scene);
     // controls.setRotation(0.15, -0.15)
 }
