@@ -614,7 +614,7 @@ const hotspotData = [
             description: "These horns are found in the neck of every Kebu man. They are for signaling danger or general mobilization depending on the pattern of how they are being blown."
         },
         {
-            position: new THREE.Vector3(-52, 15, 180),
+            position: new THREE.Vector3(-52, 17, 195),
             videoId: "S2n8MTmksk",
             title: "Kebu Pot",
             description: "The pot is a very important commodity to the Kebu society and home. The Kebu people never used iron to cook. Clay pots were used for cooking, collecting water and preserving food itself."
@@ -626,7 +626,7 @@ const hotspotData = [
             description: "This is a Miya cat skin, it is one of the Kebu people's artifacts. It used to be used to ward away epidemics that broke out during medieval times. It used to be waved by the chief as he cast out sickness from his land."
         },
         {
-            position: new THREE.Vector3(-10, 16, -336),
+            position: new THREE.Vector3(-5, 16, -336),
             videoId: "z6iG4wFgZfc",
             title: "Enanga",
             description: "Is an instrument that the Batwa used to play after a succfesful hunt. it is made of a flattended wooden slade with nylon or animal skin cut into stings and tied from end to end horizontally to produce different pitches when played. "
@@ -649,7 +649,7 @@ const hotspotData = [
             description: "These are sticks called Imirosho used by the Batwa in cultural dances and performances. They are used for drumming or as dance props."
         },
         {
-            position: new THREE.Vector3(-10, 12, -435),
+            position: new THREE.Vector3(-5, 14, -435),
             videoId: "llJWRdh4zIc",
             title: "Ikumbi (Thumb Piano)",
             description: "This is a wooden box instrument found in the Batwa community like in most Ugandan cultures, it has a box wooden body and metal pokes tied to its neck in diferent pitches. Its played using both thumb fingers to create sound."
