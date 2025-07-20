@@ -502,10 +502,10 @@ function showYouTubeVideo_1(videoId) {
         videoContainer = document.createElement('div');
         videoContainer.id = 'video-container';
         videoContainer.style.position = 'fixed';
-        videoContainer.style.top = '50';
-        videoContainer.style.left = '50';
-        videoContainer.style.width = '50%';
-        videoContainer.style.height = '50%';
+        videoContainer.style.top = '0';
+        videoContainer.style.left = '0';
+        videoContainer.style.width = '100%';
+        videoContainer.style.height = '100%';
         videoContainer.style.backgroundColor = 'rgba(0,0,0,0.9)';
         videoContainer.style.zIndex = '1000';
         videoContainer.style.display = 'flex';
@@ -535,9 +535,10 @@ function showYouTubeVideo_1(videoId) {
         const iframe = document.createElement('iframe');
         iframe.id = 'youtube-iframe';
         iframe.style.border = 'none';
-        iframe.style.width = '40%';
-        iframe.style.height = '30%';
-        iframe.style.maxWidth = '1200px';
+        iframe.style.width = '80vw';
+        iframe.style.height = 'calc(80vw * 9 / 16)'; 
+        iframe.style.maxWidth = '800px'; 
+        iframe.style.maxHeight = 'calc(800px * 9 / 16)'; 
         iframe.allowFullscreen = true;
         videoContainer.appendChild(iframe);
         
