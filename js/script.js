@@ -502,8 +502,8 @@ function showYouTubeVideo_1(videoId) {
         videoContainer = document.createElement('div');
         videoContainer.id = 'video-container';
         videoContainer.style.position = 'fixed';
-        videoContainer.style.bottom = '50%';
-        videoContainer.style.left = '50%';
+        videoContainer.style.bottom = '20%';
+        videoContainer.style.left = '70%';
         videoContainer.style.width = '50%';
         videoContainer.style.height = '70%';
         videoContainer.style.transform = 'translate(-50%, -50%)';
