@@ -32,7 +32,7 @@ html, body {
     padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
-    z-index: 10001;
+    z-index: 1000;
     font-family: Arial, sans-serif;
     font-size: 14px;
     transition: background-color 0.3s;
