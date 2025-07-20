@@ -549,20 +549,6 @@ function showYouTubeVideo_1(videoId) {
         document.body.appendChild(videoContainer);
     } else {
         videoContainer.style.display = 'flex';
-        // Update styles in case window was resized
-        if (isMobileDevice()) {
-            videoContainer.style.top = '0';
-            videoContainer.style.left = '0';
-            videoContainer.style.width = '100%';
-            videoContainer.style.height = '50%';
-            videoContainer.style.transform = 'none';
-        } else {
-            videoContainer.style.top = '50%';
-            videoContainer.style.left = '60%';
-            videoContainer.style.transform = 'translate(-50%, -50%)';
-            videoContainer.style.width = '40%';
-            videoContainer.style.height = '60%';
-        }
     }
     
     // Set the video source
