@@ -564,11 +564,6 @@ function showYouTubeVideo_1(videoId) {
             videoContainer.style.height = '60%';
         }
     }
-       
-        document.body.appendChild(videoContainer);
-    } else {
-        videoContainer.style.display = 'flex';
-    }
     
     // Set the video source
     const iframe = document.getElementById('youtube-iframe_1');
