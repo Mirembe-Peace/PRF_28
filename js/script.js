@@ -713,7 +713,7 @@ const pictureHotspotData = [
         description: "Birara Dance"
     },
     {
-        position: new THREE.Vector3(170, 0, -106), 
+        position: new THREE.Vector3(190, 0, -90), 
         videoId: "SV6mbdtQ_qw", 
         title: "The fire making stick",
         description: "The fire making stick"
