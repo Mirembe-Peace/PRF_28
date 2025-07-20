@@ -420,8 +420,8 @@ function showYouTubeVideo(videoId, title, description) {
         videoContainer = document.createElement('div');
         videoContainer.id = 'video-container';
         videoContainer.style.position = 'fixed';
-        videoContainer.style.top = '0';
-        videoContainer.style.left = '0';
+        videoContainer.style.bottom = '20px';
+        videoContainer.style.left = '40px';
         videoContainer.style.width = '100%';
         videoContainer.style.height = '100%';
         videoContainer.style.backgroundColor = 'rgba(0,0,0,0.9)';
@@ -502,11 +502,11 @@ function showYouTubeVideo_1(videoId) {
         videoContainer = document.createElement('div');
         videoContainer.id = 'video-container';
         videoContainer.style.position = 'fixed';
-        videoContainer.style.top = '50%'; // Center vertically
-        videoContainer.style.left = '60%'; // Position to the right of the exhibit UI
-        videoContainer.style.transform = 'translate(-50%, -50%)'; // Center the container
-        videoContainer.style.width = '40%'; // Adjust width to fit beside exhibit UI
-        videoContainer.style.height = '60%'; // Adjust height as needed
+        videoContainer.style.top = '50%';
+        videoContainer.style.left = '60%'; 
+        videoContainer.style.transform = 'translate(-50%, -50%)';
+        videoContainer.style.width = '40%'; 
+        videoContainer.style.height = '60%'; 
         videoContainer.style.backgroundColor = 'rgba(0,0,0,0.9)';
         videoContainer.style.zIndex = '1000';
         videoContainer.style.display = 'flex';
@@ -613,7 +613,7 @@ const hotspotData = [
             description: "These horns are found in the neck of every Kebu man. They are for signaling danger or general mobilization depending on the pattern of how they are being blown."
         },
         {
-            position: new THREE.Vector3(-250, 22, -151),
+            position: new THREE.Vector3(-52, 12, 130),
             videoId: "S2n8MTmksk",
             title: "Kebu Pot",
             description: "The pot is a very important commodity to the Kebu society and home. The Kebu people never used iron to cook. Clay pots were used for cooking, collecting water and preserving food itself."
@@ -642,7 +642,7 @@ const hotspotData = [
             description: "This is a shaker made out of calabash. It is used to evoc spirits of the ancestors. But now its used as a music instrument."
         },
         {
-            position: new THREE.Vector3(211, 17, -60),
+            position: new THREE.Vector3(211, 17, -55),
             videoId: "LV0V9z2154w",
             title: "Sticks",
             description: "These are sticks called Imirosho used by the Batwa in cultural dances and performances. They are used for drumming or as dance props."
