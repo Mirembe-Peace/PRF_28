@@ -28,6 +28,11 @@ ambientLight.position.set(86.73729926481377, 140.41787049838712, 17.547350205707
 scene.add(ambientLight);
 scene.add(directionalLight);
 
+if(isMobile) {
+    ambientLight.intensity = 5;
+    directionalLight.intensity = 5;
+}
+
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 0.5;
 
@@ -187,6 +192,7 @@ function updateMovement(delta) {
 let controls;
 function addControls() {
 
+   if(isMobile){
     const container = document.querySelector('.canvas');
     let options = {
         delta: 0.75,           // coefficient of movement
@@ -198,8 +204,8 @@ function addControls() {
     }
     controls = new TouchControls(container.parentNode, camera, options);
     controls.setPosition(camera.position);
-    controls.addToScene(scene);
-    // controls.setRotation(0.15, -0.15)
+    controls.addToScene(scene);}
+    
 }
 
 function initControls() {
