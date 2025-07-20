@@ -265,6 +265,13 @@ html, body {
                 align-items: center;
                 pointer-events: auto;
 }
+
+            #youtube-iframe {
+                border: none;
+                width: 80%;
+                height: 60%;
+                max-width: 1200px;
+}
         }
 
 #close-instructions{
