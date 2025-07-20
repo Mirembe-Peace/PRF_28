@@ -503,7 +503,7 @@ function showYouTubeVideo_1(videoId) {
         videoContainer.style.alignItems = 'center';
         
         // Mobile styles
-        if (isMobileDevice()) {
+        if (isMobile) {
             videoContainer.style.top = '0';
             videoContainer.style.left = '0';
             videoContainer.style.width = '100%';
@@ -550,7 +550,7 @@ function showYouTubeVideo_1(videoId) {
     } else {
         videoContainer.style.display = 'flex';
         // Update styles in case window was resized
-        if (isMobileDevice()) {
+        if (isMobile) {
             videoContainer.style.top = '0';
             videoContainer.style.left = '0';
             videoContainer.style.width = '100%';
@@ -564,6 +564,8 @@ function showYouTubeVideo_1(videoId) {
             videoContainer.style.height = '60%';
         }
     }
+
+    
     
     // Set the video source
     const iframe = document.getElementById('youtube-iframe_1');
