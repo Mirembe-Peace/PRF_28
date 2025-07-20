@@ -3,6 +3,9 @@ import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'; 
 import TouchControls from './TouchControls.js'
 
+//device identification
+const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
 //setting up the scene
 const scene = new THREE.Scene();
 
@@ -38,9 +41,6 @@ renderer.toneMappingExposure = 0.5;
 
 const pmremGenerator = new THREE.PMREMGenerator(renderer);
 pmremGenerator.compileEquirectangularShader();
-
-//device identification
-const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
 //loader
 function updateLoadingProgress(progress) {
