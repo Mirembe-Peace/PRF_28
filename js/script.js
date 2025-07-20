@@ -319,7 +319,14 @@ function createExhibitHotspots() {
         });
         const sphere = new THREE.Mesh(geometry, material);
         sphere.position.copy(data.position);
-        sphere.userData = { exhibitData: data };
+        sphere.userData = { 
+            exhibitData: data,
+            videoId: data.videoId
+         };
+         sphere.userData = { 
+            isPicture: true,
+            videoId: data.videoId,
+        };
         scene.add(sphere);
         
         exhibitHotspots.push({
@@ -366,7 +373,7 @@ function onMouseClick(event) {
     
     // Check for exhibit hotspots
     const allExhibitObjects = exhibitHotspots.map(h => h.mesh);
-    const exhibitIntersects = raycaster.intersectObjects(allExhibitObjects);
+    const exhibitIntersects = raycaster.intersectObjects(allExhibitObjects && scene.children.filter(obj => obj.userData.isPicture));
     
     if (exhibitIntersects.length > 0) {
         const clickedHotspot = exhibitHotspots.find(h => h.mesh === exhibitIntersects[0].object);
