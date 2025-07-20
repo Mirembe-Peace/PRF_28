@@ -102,7 +102,7 @@ function setupMouseLock() {
         if (document.pointerLockElement === canvas || 
             document.mozPointerLockElement === canvas || 
             document.webkitPointerLockElement === canvas) {
-            if (exhibitUI.style.display === 'block' || document.getElementById('video-container') || document.getElementById('video-container_1')) {
+            if (exhibitUI.style.display === 'block' || document.getElementById('video-container')) {
                 document.exitPointerLock();
                 return;
             }
@@ -353,7 +353,7 @@ function closeExhibit(event) {
 const mouse = new THREE.Vector2();
 
 function onMouseClick(event) {
-    if (isAnimating || exhibitUI.style.display === 'block' || document.getElementById('video-container') || document.getElementById('video-container_1')) return;
+    if (isAnimating || exhibitUI.style.display === 'block' || document.getElementById('video-container')) return;
         
     mouse.x = (event.clientX / renderer.domElement.clientWidth) * 2 - 1;
     mouse.y = - (event.clientY / renderer.domElement.clientHeight) * 2 + 1;
@@ -489,11 +489,11 @@ function showYouTubeVideo(videoId, title, description) {
 //for the models
 function showYouTubeVideo_1(videoId) {
     // Create or show video container
-     let videoContainer = document.getElementById('video-container_1');
+     let videoContainer = document.getElementById('video-container');
     
     if (!videoContainer) {
         videoContainer = document.createElement('div');
-        videoContainer.id = 'video-container_1';
+        videoContainer.id = 'video-container';
         videoContainer.style.position = 'fixed';
         videoContainer.style.top = '50%';
         videoContainer.style.left = '60%'; 
@@ -527,7 +527,7 @@ function showYouTubeVideo_1(videoId) {
         
         // YouTube iframe
         const iframe = document.createElement('iframe');
-        iframe.id = 'youtube-iframe_1';
+        iframe.id = 'youtube-iframe';
         iframe.style.border = 'none';
         iframe.style.width = '90%'; // Fill the container
         iframe.style.height = '90%';; 
