@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'; 
-import TouchControls from '/TouchControls.js'
+import TouchControls from './TouchControls.js'
 
 //device identification
 const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
@@ -358,11 +358,7 @@ const mouse = new THREE.Vector2();
 
 function onMouseClick(event) {
     if (isAnimating || exhibitUI.style.display === 'block' || document.getElementById('video-container')) return;
-    
-    // For mobile, we don't want to trigger exhibits when just moving the camera
-    if (isMobile && !event.target.classList.contains('exhibit-hotspot'))return;
-
-    
+        
     mouse.x = (event.clientX / renderer.domElement.clientWidth) * 2 - 1;
     mouse.y = - (event.clientY / renderer.domElement.clientHeight) * 2 + 1;
     
