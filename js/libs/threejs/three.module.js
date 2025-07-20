@@ -22342,66 +22342,66 @@ function WebGLTextures( _gl, extensions, state, properties, capabilities, utils,
 
 	}
 
-	function resizeImage( image, needsPowerOfTwo, needsNewCanvas, maxSize ) {
+	// function resizeImage( image, needsPowerOfTwo, needsNewCanvas, maxSize ) {
 
-		let scale = 1;
+	// 	let scale = 1;
 
-		// handle case if texture exceeds max size
+	// 	// handle case if texture exceeds max size
 
-		if ( image.width > maxSize || image.height > maxSize ) {
+	// 	if ( image.width > maxSize || image.height > maxSize ) {
 
-			scale = maxSize / Math.max( image.width, image.height );
+	// 		scale = maxSize / Math.max( image.width, image.height );
 
-		}
+	// 	}
 
-		// only perform resize if necessary
+	// 	// only perform resize if necessary
 
-		if ( scale < 1 || needsPowerOfTwo === true ) {
+	// 	if ( scale < 1 || needsPowerOfTwo === true ) {
 
-			// only perform resize for certain image types
+	// 		// only perform resize for certain image types
 
-			if ( ( typeof HTMLImageElement !== 'undefined' && image instanceof HTMLImageElement ) ||
-				( typeof HTMLCanvasElement !== 'undefined' && image instanceof HTMLCanvasElement ) ||
-				( typeof ImageBitmap !== 'undefined' && image instanceof ImageBitmap ) ) {
+	// 		if ( ( typeof HTMLImageElement !== 'undefined' && image instanceof HTMLImageElement ) ||
+	// 			( typeof HTMLCanvasElement !== 'undefined' && image instanceof HTMLCanvasElement ) ||
+	// 			( typeof ImageBitmap !== 'undefined' && image instanceof ImageBitmap ) ) {
 
-				const floor = needsPowerOfTwo ? floorPowerOfTwo : Math.floor;
+	// 			const floor = needsPowerOfTwo ? floorPowerOfTwo : Math.floor;
 
-				const width = floor( scale * image.width );
-				const height = floor( scale * image.height );
+	// 			const width = floor( scale * image.width );
+	// 			const height = floor( scale * image.height );
 
-				if ( _canvas === undefined ) _canvas = createCanvas( width, height );
+	// 			if ( _canvas === undefined ) _canvas = createCanvas( width, height );
 
-				// cube textures can't reuse the same canvas
+	// 			// cube textures can't reuse the same canvas
 
-				const canvas = needsNewCanvas ? createCanvas( width, height ) : _canvas;
+	// 			const canvas = needsNewCanvas ? createCanvas( width, height ) : _canvas;
 
-				canvas.width = width;
-				canvas.height = height;
+	// 			canvas.width = width;
+	// 			canvas.height = height;
 
-				const context = canvas.getContext( '2d' );
-				context.drawImage( image, 0, 0, width, height );
+	// 			const context = canvas.getContext( '2d' );
+	// 			context.drawImage( image, 0, 0, width, height );
 
-				console.warn( 'THREE.WebGLRenderer: Texture has been resized from (' + image.width + 'x' + image.height + ') to (' + width + 'x' + height + ').' );
+	// 			console.log( 'THREE.WebGLRenderer: Texture has been resized from (' + image.width + 'x' + image.height + ') to (' + width + 'x' + height + ').' );
 
-				return canvas;
+	// 			return canvas;
 
-			} else {
+	// 		} else {
 
-				if ( 'data' in image ) {
+	// 			if ( 'data' in image ) {
 
-					console.warn( 'THREE.WebGLRenderer: Image in DataTexture is too big (' + image.width + 'x' + image.height + ').' );
+	// 				console.warn( 'THREE.WebGLRenderer: Image in DataTexture is too big (' + image.width + 'x' + image.height + ').' );
 
-				}
+	// 			}
 
-				return image;
+	// 			return image;
 
-			}
+	// 		}
 
-		}
+	// 	}
 
-		return image;
+	// 	return image;
 
-	}
+	// }
 
 	function isPowerOfTwo$1( image ) {
 
