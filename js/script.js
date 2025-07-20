@@ -24,8 +24,8 @@ renderer.setPixelRatio(window.devicePixelRatio);
 document.body.appendChild(renderer.domElement);
 
 //lights
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
+const directionalLight = new THREE.DirectionalLight(0xffffff, 0.9);
 directionalLight.position.set(-165.01445413093128, 539.25437520156, -216.11550290035518);
 ambientLight.position.set(86.73729926481377, 140.41787049838712, 17.54735020570745);
 
@@ -89,12 +89,14 @@ let isMouseLocked = false;
 
 // Setup mouse lock
 function setupMouseLock() {
+    let reminder = document.getElementById('reminder');
     document.addEventListener('click', () => {
         if (!isMouseLocked) {
             canvas.requestPointerLock = canvas.requestPointerLock || 
                                        canvas.mozRequestPointerLock || 
                                        canvas.webkitRequestPointerLock;
             canvas.requestPointerLock();
+            reminder.style.display = 'block';
         }
     });
 
@@ -115,6 +117,7 @@ function setupMouseLock() {
         } 
         else {
             isMouseLocked = false;
+            reminder.style.display = 'none';
             document.removeEventListener('mousemove', onMouseMove, false);
         }
     }
