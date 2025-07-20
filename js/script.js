@@ -199,7 +199,7 @@ function addControls() {
         hitTestDistance: 40    // distance to test for hit
     }
     controls = new TouchControls(container.parentNode, camera, options);
-    controls.setPosition(84, 45, 288);
+    controls.setPosition(84, 45, 54);
     controls.addToScene(scene);
     
 }
@@ -210,9 +210,16 @@ function initControls() {
         setupKeyboardControls();
         }
     }
-        
-//loading the model and texture
-function loadMuseum(){
+
+    new RGBELoader()
+    .setPath('https://storage.googleapis.com/pearl-artifacts-cdn/')
+    .load('environment.hdr', function (texture){
+        texture.mapping = THREE.EquirectangularReflectionMapping;
+        scene.background = texture;
+        scene.environment = texture;
+
+        //loading the model and texture
+
     const gltfLoader = new GLTFLoader(loadingManager);
 
     gltfLoader.load(
@@ -237,22 +244,11 @@ function loadMuseum(){
             console.log('an error occured while loading museum model');
         }
     );
-}
-
-if(isMobile) {
-    loadMuseum();
-}
-else{
-    new RGBELoader()
-    .setPath('https://storage.googleapis.com/pearl-artifacts-cdn/')
-    .load('environment.hdr', function (texture){
-        texture.mapping = THREE.EquirectangularReflectionMapping;
-        scene.background = texture;
-        scene.environment = texture;
-
-        loadMuseum();
     });
-}
+
+       
+    
+
 
 //operation functions
 
@@ -671,7 +667,7 @@ const hotspotData = [
 
 const pictureHotspotData = [
     {
-        position: new THREE.Vector3(-255, 45, -40), 
+        position: new THREE.Vector3(-255, 45, -35), 
         videoId: "A9P7MDe9xfQ", 
         title: "Sembagare",
         description: "Sembagare"
