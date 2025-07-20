@@ -192,8 +192,6 @@ function updateMovement(delta) {
 //mobile controls
 let controls;
 function addControls() {
-
-   if(isMobile){
     const container = document.querySelector('.canvas');
     let options = {
         delta: 0.75,           // coefficient of movement
@@ -205,7 +203,7 @@ function addControls() {
     }
     controls = new TouchControls(container.parentNode, camera, options);
     controls.setPosition(camera.position);
-    controls.addToScene(scene);}
+    controls.addToScene(scene);
     
 }
 
