@@ -28,15 +28,6 @@ const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
 const directionalLight = new THREE.DirectionalLight(0xffffff, 0.9);
 directionalLight.position.set(-165.01445413093128, 539.25437520156, -216.11550290035518);
 ambientLight.position.set(86.73729926481377, 140.41787049838712, 17.54735020570745);
-
-if(isMobile) {
-    ambientLight.intensity = 5;
-    directionalLight.intensity = 5;
-    scene.add(ambientLight);
-    scene.add(directionalLight);
-    
-}
-
 scene.add(ambientLight);
 scene.add(directionalLight);
 
