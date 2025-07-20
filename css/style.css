@@ -248,18 +248,6 @@ html, body {
             #video-description {
                 font-size: 1rem;
             }
-            #video-container {
-                position: fixed;
-                bottom: 90px;
-                left: 0;
-                background-color: rgba(204, 17, 17, 0.7);
-                padding: 20px;
-                border-radius: 10px;
-                max-width: 400px;
-                z-index: 5;
-                display: none;
-                pointer-events: auto;
-}
 
             #youtube-iframe_1 {
                 border: none;

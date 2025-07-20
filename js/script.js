@@ -489,17 +489,12 @@ function showYouTubeVideo(videoId, title, description) {
 //for the models
 function showYouTubeVideo_1(videoId) {
     // Create or show video container
-     let videoContainer = document.getElementById('video-container');
+        let videoContainer = document.getElementById('video-container_1');
     
     if (!videoContainer) {
         videoContainer = document.createElement('div');
-        videoContainer.id = 'video-container';
+        videoContainer.id = 'video-container_1';
         videoContainer.style.position = 'fixed';
-        videoContainer.style.top = '50%';
-        videoContainer.style.left = '60%'; 
-        videoContainer.style.transform = 'translate(-50%, -50%)';
-        videoContainer.style.width = '40%'; 
-        videoContainer.style.height = '60%'; 
         videoContainer.style.backgroundColor = 'rgba(0,0,0,0.9)';
         videoContainer.style.zIndex = '1000';
         videoContainer.style.display = 'flex';
@@ -507,13 +502,30 @@ function showYouTubeVideo_1(videoId) {
         videoContainer.style.justifyContent = 'center';
         videoContainer.style.alignItems = 'center';
         
+        // Mobile styles
+        if (isMobileDevice()) {
+            videoContainer.style.top = '0';
+            videoContainer.style.left = '0';
+            videoContainer.style.width = '100%';
+            videoContainer.style.height = '50%'; // Upper half of screen
+            videoContainer.style.transform = 'none';
+        } 
+        // Desktop styles
+        else {
+            videoContainer.style.top = '50%';
+            videoContainer.style.left = '60%';
+            videoContainer.style.transform = 'translate(-50%, -50%)';
+            videoContainer.style.width = '40%';
+            videoContainer.style.height = '60%';
+        }
+        
         // Close button
         const closeButton = document.createElement('button');
         closeButton.textContent = 'Close';
         closeButton.style.position = 'absolute';
         closeButton.style.top = '20px';
         closeButton.style.right = '20px';
-        closeButton.style.padding = '10px 20px';
+        closeButton.style.padding = isMobileDevice() ? '8px 16px' : '10px 20px';
         closeButton.style.backgroundColor = '#333';
         closeButton.style.color = 'white';
         closeButton.style.border = 'none';
@@ -526,21 +538,40 @@ function showYouTubeVideo_1(videoId) {
         videoContainer.appendChild(closeButton);
         
         // YouTube iframe
-        const iframe = document.createElement('iframe');
-        iframe.id = 'youtube-iframe';
+        const iframe = document.createElement('iframe_1');
+        iframe.id = 'youtube-iframe_1';
         iframe.style.border = 'none';
-        iframe.style.width = '90%'; // Fill the container
-        iframe.style.height = '90%';; 
+        iframe.style.width = isMobileDevice() ? '95%' : '90%';
+        iframe.style.height = isMobileDevice() ? '90%' : '90%';
         iframe.allowFullscreen = true;
         videoContainer.appendChild(iframe);
         
         document.body.appendChild(videoContainer);
     } else {
         videoContainer.style.display = 'flex';
+        // Update styles in case window was resized
+        if (isMobileDevice()) {
+            videoContainer.style.top = '0';
+            videoContainer.style.left = '0';
+            videoContainer.style.width = '100%';
+            videoContainer.style.height = '50%';
+            videoContainer.style.transform = 'none';
+        } else {
+            videoContainer.style.top = '50%';
+            videoContainer.style.left = '60%';
+            videoContainer.style.transform = 'translate(-50%, -50%)';
+            videoContainer.style.width = '40%';
+            videoContainer.style.height = '60%';
+        }
+    }
+       
+        document.body.appendChild(videoContainer);
+    } else {
+        videoContainer.style.display = 'flex';
     }
     
     // Set the video source
-    const iframe = document.getElementById('youtube-iframe');
+    const iframe = document.getElementById('youtube-iframe_1');
     iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
     
 }
