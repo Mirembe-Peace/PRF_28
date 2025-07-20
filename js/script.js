@@ -614,7 +614,7 @@ const hotspotData = [
             description: "These horns are found in the neck of every Kebu man. They are for signaling danger or general mobilization depending on the pattern of how they are being blown."
         },
         {
-            position: new THREE.Vector3(-52, 17, 195),
+            position: new THREE.Vector3(-52, 19, 200),
             videoId: "S2n8MTmksk",
             title: "Kebu Pot",
             description: "The pot is a very important commodity to the Kebu society and home. The Kebu people never used iron to cook. Clay pots were used for cooking, collecting water and preserving food itself."
