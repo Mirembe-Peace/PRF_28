@@ -111,7 +111,7 @@ function setupMouseLock() {
         } 
         else {
             isMouseLocked = false;
-            reminder.style.display = 'none';
+            reminder.innerHTML = 'Click on the screen to enter NAVIGATION MODE';
             document.removeEventListener('mousemove', onMouseMove, false);
         }
     }
