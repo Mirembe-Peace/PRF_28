@@ -191,13 +191,13 @@ function updateMovement(delta) {
 let controls;
 function addControls() {
     const container = document.querySelector('.canvas');
-    canvasContainer.append(renderer.domElement)
     let canvasContainer = document.getElementById('canvas-container');
     canvasContainer = document.createElement('div');
     canvasContainer.id = 'canvas-container';
     canvasContainer.style.position = 'relative';
     canvasContainer.style.top = '10px';
     canvasContainer.appendChild(container);
+    canvasContainer.append(renderer.domElement)
 
     let options = {
         delta: 0.75,           // coefficient of movement
