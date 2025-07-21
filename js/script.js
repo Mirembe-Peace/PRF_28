@@ -501,9 +501,9 @@ function showYouTubeVideo_1(videoId) {
         videoContainer_1.style.width = '100%';
         videoContainer_1.style.height = '30%';
         } else {
-            videoContainer_1.style.top = '100px';
-            videoContainer_1.style.left = '0';
-            videoContainer_1.style.width = '100%';
+            videoContainer_1.style.top = '70px';
+            videoContainer_1.style.margins = 'auto';
+            videoContainer_1.style.width = '70%';
             videoContainer_1.style.height = '50%';
 
         }
@@ -697,9 +697,9 @@ const pictureHotspotData = [
     },
     {
         position: new THREE.Vector3(10, 50, -115), 
-        videoId: "5ps75Q-4Zi4", 
-        title: "Batwa Dance",
-        description: "Batwa Dance"
+        videoId: "VGMpnwDfsl4", 
+        title: "Sembagare assembling",
+        description: "Sembagare assembling"
     },
     {
         position: new THREE.Vector3(170, 0, -125), 
