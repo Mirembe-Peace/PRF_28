@@ -495,7 +495,7 @@ function showYouTubeVideo_1(videoId) {
         videoContainer_1 = document.createElement('div');
         videoContainer_1.id = 'video-container_1';
         videoContainer_1.style.position = 'fixed';
-        videoContainer_1.style.top = '100px';
+        videoContainer_1.style.top = '170px';
         videoContainer_1.style.left = '0';
         videoContainer_1.style.width = '100%';
         videoContainer_1.style.height = '30%';
@@ -507,7 +507,7 @@ function showYouTubeVideo_1(videoId) {
         videoContainer_1.style.alignItems = 'center';
 
         // Close button
-        const closeButton_1 = document.createElement('button1');
+        const closeButton_1 = document.createElement('button');
         closeButton_1.textContent = 'Close';
         closeButton_1.style.position = 'absolute';
         closeButton_1.style.top = '20px';
@@ -524,7 +524,7 @@ function showYouTubeVideo_1(videoId) {
         });
         videoContainer_1.appendChild(closeButton_1);
 
-        const iframe_1 = document.createElement('iframe1');
+        const iframe_1 = document.createElement('iframe');
         iframe_1.id = 'youtube-iframe_1';
         iframe_1.style.border = 'none';
         iframe_1.style.width = '80%';
