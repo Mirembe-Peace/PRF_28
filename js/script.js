@@ -91,6 +91,7 @@ function setupMouseLock() {
                                        canvas.webkitRequestPointerLock;
             canvas.requestPointerLock();
             reminder.style.display = 'block';
+            reminder.innerHTML = 'Press <b>ESC</b> on your keyBoard to return the pointer'
         }
     });
 
@@ -111,7 +112,7 @@ function setupMouseLock() {
         } 
         else {
             isMouseLocked = false;
-            reminder.innerHTML = 'Click on the screen to enter NAVIGATION MODE';
+            reminder.innerHTML = 'Click on the screen to enter <b>NAVIGATION MODE</b>';
             document.removeEventListener('mousemove', onMouseMove, false);
         }
     }
@@ -488,89 +489,57 @@ function showYouTubeVideo(videoId, title, description) {
 
 //for the models
 function showYouTubeVideo_1(videoId) {
-    // Create or show video container
-        let videoContainer = document.getElementById('video-container_1');
-    
-    if (!videoContainer) {
-        videoContainer = document.createElement('div');
-        videoContainer.id = 'video-container_1';
-        videoContainer.style.position = 'fixed';
-        videoContainer.style.backgroundColor = 'rgba(0,0,0,0.9)';
-        videoContainer.style.zIndex = '1000';
-        videoContainer.style.display = 'flex';
-        videoContainer.style.flexDirection = 'column';
-        videoContainer.style.justifyContent = 'center';
-        videoContainer.style.alignItems = 'center';
-        
-        // Mobile styles
-        if (isMobile) {
-            videoContainer.style.top = '0';
-            videoContainer.style.left = '0';
-            videoContainer.style.width = '100%';
-            videoContainer.style.height = '50%'; // Upper half of screen
-            videoContainer.style.transform = 'none';
-        } 
-        // Desktop styles
-        else {
-            videoContainer.style.top = '50%';
-            videoContainer.style.left = '60%';
-            videoContainer.style.transform = 'translate(-50%, -50%)';
-            videoContainer.style.width = '40%';
-            videoContainer.style.height = '60%';
-        }
-        
+    let videoContainer_1 = document.getElementById('video-container_1');
+
+    if(!videoContainer_1) {
+        videoContainer_1 = document.createElement('div');
+        videoContainer_1.id = 'video-container_1';
+        videoContainer_1.style.position = 'fixed';
+        videoContainer_1.style.top = '60px';
+        videoContainer_1.style.left = '0';
+        videoContainer_1.style.width = '100%';
+        videoContainer_1.style.height = '30%';
+        videoContainer_1.style.backgroundColor = 'rgba(0,0,0,0.9)';
+        videoContainer_1.style.zIndex = '1000';
+        videoContainer_1.style.display = 'flex';
+        videoContainer_1.style.flexDirection = 'column';
+        videoContainer_1.style.justifyContent = 'center';
+        videoContainer_1.style.alignItems = 'center';
+
         // Close button
-        const closeButton = document.createElement('button');
-        closeButton.textContent = 'Close';
-        closeButton.style.position = 'absolute';
-        closeButton.style.top = '20px';
-        closeButton.style.right = '20px';
-        closeButton.style.padding = isMobileDevice() ? '8px 16px' : '10px 20px';
-        closeButton.style.backgroundColor = '#333';
-        closeButton.style.color = 'white';
-        closeButton.style.border = 'none';
-        closeButton.style.borderRadius = '5px';
-        closeButton.style.cursor = 'pointer';
-        closeButton.style.zIndex = '1001';
-        closeButton.addEventListener('click', () => {
-            document.body.removeChild(videoContainer);
+        const closeButton_1 = document.createElement('button_1');
+        closeButton_1.textContent = 'Close';
+        closeButton_1.style.position = 'absolute';
+        closeButton_1.style.top = '20px';
+        closeButton_1.style.right = '20px';
+        closeButton_1.style.padding = '10px 20px';
+        closeButton_1.style.backgroundColor = '#333';
+        closeButton_1.style.color = 'white';
+        closeButton_1.style.border = 'none';
+        closeButton_1.style.borderRadius = '5px';
+        closeButton_1.style.cursor = 'pointer';
+        closeButton_1.style.zIndex = '1001';
+        closeButton_1.addEventListener('click', () => {
+            document.body.removeChild(videoContainer_1);
         });
-        videoContainer.appendChild(closeButton);
-        
-        // YouTube iframe
-        const iframe = document.createElement('iframe_1');
-        iframe.id = 'youtube-iframe_1';
-        iframe.style.border = 'none';
-        iframe.style.width = isMobileDevice() ? '95%' : '90%';
-        iframe.style.height = isMobileDevice() ? '90%' : '90%';
-        iframe.allowFullscreen = true;
-        videoContainer.appendChild(iframe);
-        
-        document.body.appendChild(videoContainer);
+        videoContainer_1.appendChild(closeButton_1);
+
+        const iframe_1 = document.createElement('iframe_1');
+        iframe_1.id = 'youtube-iframe_1';
+        iframe_1.style.border = 'none';
+        iframe_1.style.width = '80%';
+        iframe_1.style.height = '60%';
+        iframe_1.allowFullscreen = 'true';
+        videoContainer_1.appendChild(iframe_1);
+
+        document.body.appendChild(videoContainer_1);
+
     } else {
-        videoContainer.style.display = 'flex';
-        // Update styles in case window was resized
-        if (isMobile) {
-            videoContainer.style.top = '0';
-            videoContainer.style.left = '0';
-            videoContainer.style.width = '100%';
-            videoContainer.style.height = '50%';
-            videoContainer.style.transform = 'none';
-        } else {
-            videoContainer.style.top = '50%';
-            videoContainer.style.left = '60%';
-            videoContainer.style.transform = 'translate(-50%, -50%)';
-            videoContainer.style.width = '40%';
-            videoContainer.style.height = '60%';
-        }
+        videoContainer_1.style.display = 'flex';
     }
 
-    
-    
-    // Set the video source
-    const iframe = document.getElementById('youtube-iframe_1');
-    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
-    
+    const iframe_1 = document.getElementById('youtube-iframe_1');
+    iframe_1.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
 }
 
 //instruction panel
