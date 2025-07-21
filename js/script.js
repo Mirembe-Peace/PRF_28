@@ -191,6 +191,13 @@ function updateMovement(delta) {
 let controls;
 function addControls() {
     const container = document.querySelector('.canvas');
+    let canvasContainer = document.getElementById('canvas-container');
+    canvasContainer = document.createElement('div');
+    canvasContainer.id = 'canvas-container';
+    canvasContainer.style.position = 'relative';
+    canvasContainer.style.top = '10px';
+    canvasContainer.appendChild(container);
+
     let options = {
         delta: 0.75,           // coefficient of movement
         moveSpeed: 0.9,        // speed of movement
@@ -502,7 +509,7 @@ function showYouTubeVideo_1(videoId) {
         videoContainer_1.style.height = '30%';
         } else {
             videoContainer_1.style.top = '70px';
-            videoContainer_1.style.margins = 'auto';
+            videoContainer_1.style.left = '70px';
             videoContainer_1.style.width = '70%';
             videoContainer_1.style.height = '50%';
 
