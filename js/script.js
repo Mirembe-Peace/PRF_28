@@ -191,7 +191,7 @@ function updateMovement(delta) {
 let controls;
 function addControls() {
     const container = document.querySelector('.canvas');
-    container.append(renderer.domElement)
+    canvasContainer.append(renderer.domElement)
     let canvasContainer = document.getElementById('canvas-container');
     canvasContainer = document.createElement('div');
     canvasContainer.id = 'canvas-container';
