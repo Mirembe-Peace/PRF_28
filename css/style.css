@@ -15,11 +15,12 @@ html, body {
     margin: 0em;
     
 }
-
+@media (min-width: 768px){
 .canvas{
     position: fixed;
     top: 0;
     left: 0;
+}
 }
 
 
