@@ -77,7 +77,7 @@ class RotationPad {
 
     alignAndConfigPad(canvas){
         this.padElement.style.bottom = '10px'
-        this.padElement.style.left = canvas.offsetWidth - this.region.offsetWidth - 20 + 'px'
+        this.padElement.style.left ='5px'
 
         this.regionData.width = this.region.offsetWidth
         this.regionData.height = this.region.offsetHeight
