@@ -211,6 +211,10 @@ function initControls() {
     if (!isMobile){
         setupMouseLock();
         setupKeyboardControls();
+        } else{
+                addControls();
+                console.log("Rotation pad exists:", document.querySelector('.rotation-pad') !== null);
+                console.log("Movement pad exists:", document.querySelector('.movement-pad') !== null);
         }
     }
     
@@ -228,9 +232,7 @@ function initControls() {
             createExhibitHotspots();
             createPictureHotspots();
             initControls();
-            if(isMobile){
-                addControls();
-            }
+            
         },
         function ( xhr ) {
             console.log( (xhr.loaded / xhr.total * 100 ) + '% loaded');
