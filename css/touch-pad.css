@@ -3,6 +3,7 @@ body {
 }
 .rotation-pad {
 	position: fixed;
+	z-index: 1001;
 }
 
 .rotation-pad .region {
@@ -14,6 +15,7 @@ body {
 	border: 2px solid rgba(218, 225, 230, 0.25);
 	border-radius: 90px;
 	box-shadow: 0px 0px 5px rgba(194, 200, 204, 0.55);
+	z-index: 1001;
 	user-select: none;
 }
 
@@ -30,11 +32,13 @@ body {
 	box-shadow: 0px 0px 7px rgba(195, 205, 245, 0.9);
 	text-align: center;
 	font: 24px/44px "Courier New", Courier, monospace;
+	z-index: 1001;
     user-select: none;
 }
 
 .movement-pad {
 	position: fixed;
+	z-index: 1001;
 }
 
 .movement-pad .region {
@@ -46,6 +50,7 @@ body {
 	border: 2px solid rgba(218, 225, 230, 0.25);
 	border-radius: 90px;
 	box-shadow: 0px 0px 5px rgba(194, 200, 204, 0.55);
+	z-index: 1001;
 	user-select: none;
 }
 
@@ -62,5 +67,6 @@ body {
 	box-shadow: 0px 0px 7px rgba(195, 205, 245, 0.9);
 	text-align: center;
 	font: 24px/44px "Courier New", Courier, monospace;
+	z-index: 1001;
 	user-select: none;
 }
