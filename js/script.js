@@ -191,13 +191,7 @@ function updateMovement(delta) {
 
 let controls;
 function addControls() {
-    let container = document.getElementById('container3d');
-    let canvas = container.getElementsByTagName('canvas')[0];
-
-      if (!canvas || !canvas.height) {
-        setTimeout(addControls, 100);
-        return;
-    }
+    let container = document.getElementById('canvas');
 
     let options = {
         delta: 0.75,           // coefficient of movement

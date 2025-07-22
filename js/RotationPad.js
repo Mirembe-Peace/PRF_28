@@ -76,16 +76,6 @@ class RotationPad {
     }
 
     alignAndConfigPad(canvas){
-        // Check if canvas exists and has dimensions
-        if (!canvas || !canvas.height) {
-            // Try to get canvas again if not available
-            canvas = this.container.getElementsByTagName('canvas')[0];
-            if (!canvas || !canvas.height) {
-                // If still not available, try again later
-                setTimeout(() => this.alignAndConfigPad(canvas), 100);
-                return;
-            }
-        }
         this.padElement.style.top = canvas.height + this.container.getBoundingClientRect().top
                                     - this.region.offsetHeight - 10 + 'px'
         this.padElement.style.left = canvas.offsetWidth - this.region.offsetWidth - 20 + 'px'
