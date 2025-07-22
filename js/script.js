@@ -191,7 +191,7 @@ function updateMovement(delta) {
 
 let controls;
 function addControls() {
-    let container = document.getElementById('canvas');
+    let container = document.querySelector('.canvas');
 
     let options = {
         delta: 0.75,           // coefficient of movement
@@ -201,7 +201,7 @@ function addControls() {
         hitTest: true,         // stop on hitting objects
         hitTestDistance: 40    // distance to test for hit
     }
-    controls = new TouchControls(container.parentNode, camera, options);
+    controls = new TouchControls(container, camera, options);
     controls.setPosition(84, 34, -10);
     controls.addToScene(scene);
     
