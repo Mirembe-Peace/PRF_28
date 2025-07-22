@@ -193,7 +193,6 @@ function updateMovement(delta) {
 
 let controls;
 function addControls() {
- container.append(renderer.domElement);
     let options = {
         delta: 0.75,           // coefficient of movement
         moveSpeed: 0.9,        // speed of movement
