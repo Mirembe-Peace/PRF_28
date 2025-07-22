@@ -188,16 +188,10 @@ function updateMovement(delta) {
 }
 
 //mobile controls
+
 let controls;
 function addControls() {
-    const container = document.querySelector('.canvas');
-    let canvasContainer = document.getElementById('canvas-container');
-    canvasContainer = document.createElement('div');
-    canvasContainer.id = 'canvas-container';
-    canvasContainer.style.position = 'relative';
-    canvasContainer.style.top = '10px';
-    container.appendChild(canvasContainer);
-    container.append(renderer.domElement)
+    let container = document.getElementById('container3d');
 
     let options = {
         delta: 0.75,           // coefficient of movement
@@ -511,8 +505,9 @@ function showYouTubeVideo_1(videoId) {
         } else {
             videoContainer_1.style.top = '70px';
             videoContainer_1.style.right = '70px';
-            videoContainer_1.style.width = '70%';
-            videoContainer_1.style.height = '50%';
+            videoContainer_1.style.width = '50%';
+            videoContainer_1.style.height = '70%';
+            videoContainer_1.style.borderRadius = '5px'
 
         }
         videoContainer_1.style.backgroundColor = 'rgba(0,0,0,0.9)';

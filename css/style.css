@@ -248,7 +248,12 @@ html, body {
             #video-description {
                 font-size: 1rem;
             }
-            .canvas{
+            #container {
+                position: relative;
+                top: 10px;
+            }
+
+            #container3d canvas {
                 position: absolute;
             }
             
