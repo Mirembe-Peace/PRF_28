@@ -16,7 +16,6 @@ camera.position.set(84, 45, 288);
 
 //setting upvthe canvas
 const canvas = document.querySelector('.canvas');
-let container = canvas;
 
 //setting up the renderer
 const renderer = new THREE.WebGLRenderer({canvas: canvas});
@@ -193,6 +192,7 @@ function updateMovement(delta) {
 
 let controls;
 function addControls() {
+    const container = document.querySelector('.canvas');
     let options = {
         delta: 0.75,           // coefficient of movement
         moveSpeed: 0.9,        // speed of movement
