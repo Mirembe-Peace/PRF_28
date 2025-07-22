@@ -213,16 +213,8 @@ function initControls() {
         setupKeyboardControls();
         }
     }
-
-    new RGBELoader()
-    .setPath('https://storage.googleapis.com/pearl-artifacts-cdn/')
-    .load('environment.hdr', function (texture){
-        texture.mapping = THREE.EquirectangularReflectionMapping;
-        scene.background = texture;
-        scene.environment = texture;
-
-        //loading the model and texture
-
+    
+    function loadMuseum(){
     const gltfLoader = new GLTFLoader(loadingManager);
 
     gltfLoader.load(
@@ -247,7 +239,22 @@ function initControls() {
             console.log('an error occured while loading museum model');
         }
     );
+}
+
+if(isMobile) {
+    loadMuseum();
+}
+else{
+    new RGBELoader()
+    .setPath('https://storage.googleapis.com/pearl-artifacts-cdn/')
+    .load('environment.hdr', function (texture){
+        texture.mapping = THREE.EquirectangularReflectionMapping;
+        scene.background = texture;
+        scene.environment = texture;
+
+        loadMuseum();
     });
+}
 
        
     
