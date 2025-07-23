@@ -251,6 +251,7 @@ html, body {
                 font-size: 1rem;
             }
             .canvas{
+                position: relative;
                 top: 1px;
             }
             
