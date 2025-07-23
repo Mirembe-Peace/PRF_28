@@ -25,7 +25,7 @@ class RotationPad {
         this.container.append(this.padElement)
 
         // Aligning pad:
-        let canvas = document.querySelector('.canvas')[0]
+        let canvas = document.querySelector('.canvas')
         this.alignAndConfigPad(canvas)
 
         // events
