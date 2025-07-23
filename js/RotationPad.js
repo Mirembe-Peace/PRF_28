@@ -25,7 +25,7 @@ class RotationPad {
         this.container.append(this.padElement)
 
         // Aligning pad:
-        let canvas = container.getElementsByTagName('canvas')[0]
+        let canvas = document.querySelector('.canvas')[0]
         this.alignAndConfigPad(canvas)
 
         // events
@@ -76,10 +76,10 @@ class RotationPad {
     }
 
     alignAndConfigPad(canvas){
-        this.padElement.style.top = this.container.getBoundingClientRect().top
+        this.padElement.style.top = canvas.height + this.container.getBoundingClientRect().top
                                     - this.region.offsetHeight - 10 + 'px'
-        this.padElement.style.left = this.region.offsetWidth - 20 + 'px'
-
+        this.padElement.style.left = canvas.offsetWidth - this.region.offsetWidth - 20 + 'px'
+h
         this.regionData.width = this.region.offsetWidth
         this.regionData.height = this.region.offsetHeight
         this.regionData.position = {
