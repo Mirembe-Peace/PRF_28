@@ -204,28 +204,6 @@ function addControls() {
     controls = new TouchControls(container, camera, options);
     controls.setPosition(84, 34, -10);
     controls.addToScene(scene);
-
-    setTimeout(() => {
-        const rotationPad = document.querySelector('.rotation-pad');
-        const movementPad = document.querySelector('.movement-pad');
-        
-        if (rotationPad) {
-            rotationPad.style.display = 'block';
-            rotationPad.style.bottom = '20px';
-            rotationPad.style.right = '20px';
-            rotationPad.style.zIndex = '1001';
-        }
-        
-        if (movementPad) {
-            movementPad.style.display = 'block';
-            movementPad.style.bottom = '20px';
-            movementPad.style.left = '20px';
-            movementPad.style.zIndex = '1001';
-        }
-        
-        console.log("Rotation pad:", rotationPad);
-        console.log("Movement pad:", movementPad);
-    }, 1000);
     
 }
 

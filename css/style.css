@@ -250,7 +250,9 @@ html, body {
             #video-description {
                 font-size: 1rem;
             }
-            
+            .canvas{
+                top: 1px;
+            }
             
         }
 
