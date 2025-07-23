@@ -76,7 +76,8 @@ class MovementPad {
     }
 
     alignAndConfigPad(canvas) {
-        this.padElement.style.bottom = '10px'
+        this.padElement.style.top = this.container.getBoundingClientRect().top
+                                    - this.region.offsetHeight - 10 + 'px'
         this.padElement.style.left = '20px'
 
         this.regionData.width = this.region.offsetWidth
