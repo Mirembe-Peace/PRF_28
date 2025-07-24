@@ -602,8 +602,9 @@ const hotspotData = [
         },
         {
             position: new THREE.Vector3(-100, 40, -510),
+            videoId: "kVSOh_rYe2M",
             title: "Bow",
-            description: "Bow model."
+            description: "Is an instrument for women, it is used to accompany songs that talk about teaching such as marriage and childbirth lessons to young girls."
         },
         {
             position: new THREE.Vector3(-100, 90, -515),
