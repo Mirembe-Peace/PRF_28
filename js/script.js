@@ -597,6 +597,7 @@ const hotspotData = [
         },
         {
             position: new THREE.Vector3(-100, -4, -500),
+            videoId: "MpxEd6ri7qQ",
             title: "Axe",
             description: "This is a male traditional hoe called Eligo. It is held by the chief to show leadersip and was used as awar tool."
         },
@@ -608,6 +609,7 @@ const hotspotData = [
         },
         {
             position: new THREE.Vector3(-100, 90, -515),
+            videoId: "a2r8nTdaZkM",
             title: "Elegu",
             description: "The is also called Eligo it is the female one held by the chiefs wife as a symbol of leadership also used in war.."
         },
@@ -643,6 +645,7 @@ const hotspotData = [
         },
         {
             position: new THREE.Vector3(-40, 20, -65),
+            videoId: "UunPcymtaaA",
             title: "Ogorogogo",
             description: "This is a farming tool used by the Ukebhu for harrowing, it is called Agorogoro. It normally has got an iron fixed on its sharp end."
         },
@@ -672,6 +675,7 @@ const hotspotData = [
         },
         {
             position: new THREE.Vector3(-52, 12, 107),
+            videoId: "j1kV5R-UE_Y",
             title: "Vaccum",
             description: "This is a food warmer called Abhoro. It is used to keep food fresh and warm."
         },
