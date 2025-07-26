@@ -91,14 +91,8 @@ function setupMouseLock() {
                                        canvas.mozRequestPointerLock || 
                                        canvas.webkitRequestPointerLock;
             canvas.requestPointerLock();
-              if(!isMobile) {
             reminder.style.display = 'block';
             reminder.innerHTML = 'Press <b>ESC</b> on your keyBoard to return the pointer'}
-            else{
-                 reminder.style.display = 'block';
-                reminder.innerHTML = 'Scroll down to bring uo the navigation controls'}
-            
-        }
     });
 
     document.addEventListener('pointerlockchange', lockChangeAlert, false);
@@ -197,6 +191,8 @@ function updateMovement(delta) {
 
 let controls;
 function addControls() {
+     reminder.style.display = 'block';
+            reminder.innerHTML = 'Scroll down on the page to get navigation panels'}
     const container = document.querySelector('.canvas');
     let options = {
         delta: 0.75,           // coefficient of movement
