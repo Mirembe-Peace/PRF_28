@@ -191,6 +191,7 @@ function updateMovement(delta) {
 
 let controls;
 function addControls() {
+    let reminder = document.getElementById('reminder');
     reminder.style.display = 'block';
     reminder.innerHTML = 'Scroll down on the page to get navigation panels'
      setTimeout(() => {
