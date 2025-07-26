@@ -310,7 +310,7 @@ function createPictureHotspots() {
         const material = new THREE.MeshBasicMaterial({
             color: 0x0000ff,
             transparent: true,
-            opacity: 0.5// change back after adjusting
+            opacity: 0// change back after adjusting
         });
         const pictureFrame = new THREE.Mesh(geometry, material);
         pictureFrame.position.copy(data.position);
@@ -337,7 +337,7 @@ function createExhibitHotspots() {
         const material = new THREE.MeshBasicMaterial({
             color: 0xff0000,
             transparent: true,
-            opacity: 0.5// Completely invisible
+            opacity: 0// Completely invisible
         });
         const sphere = new THREE.Mesh(geometry, material);
         sphere.position.copy(data.position);
