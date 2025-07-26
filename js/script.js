@@ -242,15 +242,18 @@ function initControls() {
         }
     );
 }
-
-if(isMobile) {
-    loadMuseum();
-    let reminder = document.getElementById('reminder');
+function flashReminder(){
+      let reminder = document.getElementById('reminder');
     reminder.style.display = 'block';
     reminder.innerHTML = 'Scroll down on the page to get navigation panels'
      setTimeout(() => {
         reminder.style.display = 'none';
     }, 2000);
+}
+
+if(isMobile) {
+    loadMuseum();
+  
 
 flashReminder();
 setInterval(flashReminder, 10000);
