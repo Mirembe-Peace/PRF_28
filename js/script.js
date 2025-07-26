@@ -323,7 +323,7 @@ function createExhibitHotspots() {
         const material = new THREE.MeshBasicMaterial({
             color: 0xff0000,
             transparent: true,
-            opacity: 0 // Completely invisible
+            opacity: 0.5// Completely invisible
         });
         const sphere = new THREE.Mesh(geometry, material);
         sphere.position.copy(data.position);
@@ -707,7 +707,7 @@ const pictureHotspotData = [
         description: "Birara Dance"
     },
     {
-        position: new THREE.Vector3(190, 0, -90), 
+        position: new THREE.Vector3(185, 0, -93), 
         videoId: "SV6mbdtQ_qw", 
         title: "The fire making stick",
         description: "The fire making stick"
