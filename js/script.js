@@ -91,8 +91,13 @@ function setupMouseLock() {
                                        canvas.mozRequestPointerLock || 
                                        canvas.webkitRequestPointerLock;
             canvas.requestPointerLock();
+              if(!isMobile) {
             reminder.style.display = 'block';
-            reminder.innerHTML = 'Press <b>ESC</b> on your keyBoard to return the pointer'
+            reminder.innerHTML = 'Press <b>ESC</b> on your keyBoard to return the pointer'}
+            else{
+                 reminder.style.display = 'block';
+                reminder.innerHTML = 'Scroll down to bring uo the navigation controls'}
+            
         }
     });
 
