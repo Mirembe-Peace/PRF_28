@@ -191,16 +191,7 @@ function updateMovement(delta) {
 
 let controls;
 function addControls() {
-    let reminder = document.getElementById('reminder');
-    reminder.style.display = 'block';
-    reminder.innerHTML = 'Scroll down on the page to get navigation panels'
-     setTimeout(() => {
-        reminder.style.display = 'none';
-    }, 2000);
-
-flashReminder();
-setInterval(flashReminder, 10000);
-
+    
     const container = document.querySelector('.canvas');
     let options = {
         delta: 0.75,           // coefficient of movement
@@ -254,6 +245,16 @@ function initControls() {
 
 if(isMobile) {
     loadMuseum();
+    let reminder = document.getElementById('reminder');
+    reminder.style.display = 'block';
+    reminder.innerHTML = 'Scroll down on the page to get navigation panels'
+     setTimeout(() => {
+        reminder.style.display = 'none';
+    }, 2000);
+
+flashReminder();
+setInterval(flashReminder, 10000);
+
 }
 else{
     new RGBELoader()
