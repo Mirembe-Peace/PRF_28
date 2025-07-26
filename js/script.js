@@ -197,7 +197,7 @@ function addControls() {
      setTimeout(() => {
         reminder.style.display = 'none';
     }, 2000);
-}
+
 flashReminder();
 setInterval(flashReminder, 10000);
 
