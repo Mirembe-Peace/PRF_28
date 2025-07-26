@@ -287,7 +287,6 @@ html, body {
 @media (max-width: 767px) {
     #for-desktop { display: none; }
 
-    #reminder { display: none; }
 }
 
 
