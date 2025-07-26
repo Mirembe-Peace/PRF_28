@@ -733,7 +733,7 @@ const pictureHotspotData = [
         description: "Sembagare assembling"
     },
     {
-        position: new THREE.Vector3(170, 0, -125), 
+        position: new THREE.Vector3(210, 0, -195), 
         videoId: "z6iG4wFgZfc", 
         title: "Enanga",
         description: "Enanga"
