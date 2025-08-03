@@ -9,10 +9,11 @@ html, body {
     background: #000;
     color: #fff;
     overflow-x: hidden;
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    height: 100%;
     font-size: 12px;
     margin: 0em;
+    position: fixed;
     
 }
 .canvas{
@@ -286,7 +287,6 @@ html, body {
 /* Hide desktop instructions by default on mobile */
 @media (max-width: 767px) {
     #for-desktop { display: none; }
-
 }
 
 
