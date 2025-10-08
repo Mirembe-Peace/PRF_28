@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { VRButton } from 'three/examples/jsm/webxr/VRButton'
+ import { VRButton } from 'https://unpkg.com/three@0.154/examples/jsm/webxr/VRButton.js';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'; 
 import TouchControls from './TouchControls.js'
