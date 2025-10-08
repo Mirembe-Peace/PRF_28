@@ -375,7 +375,7 @@ function initControls() {
     const gltfLoader = new GLTFLoader(loadingManager);
 
     gltfLoader.load(
-        'https://storage.googleapis.com/ucu_library/librarygltf/library.gltf',
+        'https://storage.googleapis.com/version_01_ucu/museum_model.gltf',
         function (gltf) {
             const museum = gltf.scene;
             museum.position.set(0, 0, 0);
