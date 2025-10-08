@@ -67,12 +67,12 @@ const loadingManager = new THREE.LoadingManager(
 
 //controls
 //VR controls
-const controllerModelFactory = new controllerModelFactory();
+const XRControllerModelFactory = new XRControllerModelFactory();
 const controller1 = renderer.xr.getController(0);
 scene.add(controller1);
 
 const controllerGrip1 = renderer.xr.getControllerGrip(0);
-controllerGrip1.add(controllerModelFactory.createControllerModel(controllerGrip1));
+controllerGrip1.add(XRControllerModelFactory.createControllerModel(controllerGrip1));
 scene.add(controllerGrip1);
 
 // Add controller input handling
@@ -86,7 +86,7 @@ const controller2 = renderer.xr.getController(1);
 scene.add(controller2);
 
 const controllerGrip2 = renderer.xr.getControllerGrip(1);
-controllerGrip2.add(controllerModelFactory.createControllerModel(controllerGrip2));
+controllerGrip2.add(XRControllerModelFactory.createControllerModel(controllerGrip2));
 scene.add(controllerGrip2);
 
 controller2.addEventListener('selectstart', onSelectStart);
