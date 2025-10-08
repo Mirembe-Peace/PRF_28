@@ -372,11 +372,11 @@ function initControls() {
     const gltfLoader = new GLTFLoader(loadingManager);
 
     gltfLoader.load(
-        'https://storage.googleapis.com/ucu_library/librarygltf/library.gltf',
+        'https://storage.googleapis.com/pearl-artifacts-cdn/scene.gltf',
         function (gltf) {
             const museum = gltf.scene;
             museum.position.set(0, 0, 0);
-            museum.scale.set(2, 2, 2);
+            museum.scale.set(1.5, 1.5, 1.5);
             scene.add(museum);
 
             createExhibitHotspots();
@@ -442,11 +442,11 @@ exhibitUI.appendChild(closeButton);
 
 function createPictureHotspots() {
     pictureHotspotData.forEach((data) => {
-        const geometry = new THREE.SphereGeometry(13, 24, 24);
+        const geometry = new THREE.SphereGeometry(5, 5, 5);
         const material = new THREE.MeshBasicMaterial({
             color: 0x0000ff,
             transparent: true,
-            opacity: 0 // change back after adjusting
+            opacity: 1 // change back after adjusting
         });
         const pictureFrame = new THREE.Mesh(geometry, material);
         pictureFrame.position.copy(data.position);
@@ -469,11 +469,11 @@ function createExhibitHotspots() {
     
     // Create 16 invisible hotspots
     hotspotData.forEach((data, index) => {
-        const geometry = new THREE.SphereGeometry(13, 24, 24);
+        const geometry = new THREE.SphereGeometry(5, 5, 5);
         const material = new THREE.MeshBasicMaterial({
-            color: 0xff0000,
+            color: 0x0000ff,
             transparent: true,
-            opacity: 0 // Completely invisible
+            opacity: 1 // Completely invisible
         });
         const sphere = new THREE.Mesh(geometry, material);
         sphere.position.copy(data.position);
