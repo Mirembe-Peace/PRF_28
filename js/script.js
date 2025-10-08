@@ -341,7 +341,7 @@ function initControls() {
         function (gltf) {
             const museum = gltf.scene;
             museum.position.set(0, 0, 0);
-            museum.scale.set(2, 2, 2);
+            museum.scale.set(1.7, 1.7, 1.7);
             scene.add(museum);
 
             createExhibitHotspots();
@@ -421,7 +421,7 @@ exhibitUI.appendChild(closeButton);
 
 function createPictureHotspots() {
     pictureHotspotData.forEach((data) => {
-        const geometry = new THREE.SphereGeometry(13, 24, 24);
+        const geometry = new THREE.SphereGeometry(9, 20, 20);
         const material = new THREE.MeshBasicMaterial({
             color: 0x0000ff,
             transparent: true,
@@ -448,7 +448,7 @@ function createExhibitHotspots() {
     
     // Create 16 invisible hotspots
     hotspotData.forEach((data, index) => {
-        const geometry = new THREE.SphereGeometry(13, 24, 24);
+        const geometry = new THREE.SphereGeometry(9, 20, 20);
         const material = new THREE.MeshBasicMaterial({
             color: 0xff0000,
             transparent: true,
@@ -713,157 +713,157 @@ const instructionContent = document.getElementById('instruction-content');
     });
 //home button functionality
 homeButton.addEventListener('click', () => {
-        window.location.href = 'https://pearlrhythmfoundation.org/category/art-archive/';
+        window.location.href = 'https://ucu.ac.ug/';
     });
 
 //hotspot data
 const hotspotData = [
         {
             position: new THREE.Vector3(-40, 18, -165),
-            videoId: "ROmhZu5KGFs",
-            title: "Ankle Rattles",
-            description: "These are ankle rattles for wearing on the unkles to enhance the sound of music at celebrations like marriages and royal fuctions."
+            videoId: "AQCMzfdex5E", 
+            title: "Uganda Christian University",
+            description: "A glimpse of Uganda Christian University, the Ham Mukasa library"
         },
         {
             position: new THREE.Vector3(-100, -4, -500),
-            videoId: "MpxEd6ri7qQ",
-            title: "Axe",
-            description: "This is a male traditional hoe called Eligo. It is held by the chief to show leadersip and was used as awar tool."
+            videoId: "AQCMzfdex5E", 
+            title: "Uganda Christian University",
+            description: "A glimpse of Uganda Christian University, the Ham Mukasa library"
         },
         {
             position: new THREE.Vector3(-100, 40, -510),
-            videoId: "kVSOh_rYe2M",
-            title: "Bow",
-            description: "Is an instrument for women, it is used to accompany songs that talk about teaching such as marriage and childbirth lessons to young girls."
+            videoId: "AQCMzfdex5E", 
+            title: "Uganda Christian University",
+            description: "A glimpse of Uganda Christian University, the Ham Mukasa library"
         },
         {
             position: new THREE.Vector3(-100, 90, -515),
-            videoId: "a2r8nTdaZkM",
-            title: "Elegu",
-            description: "The is also called Eligo it is the female one held by the chiefs wife as a symbol of leadership also used in war.."
+           videoId: "AQCMzfdex5E", 
+            title: "Uganda Christian University",
+            description: "A glimpse of Uganda Christian University, the Ham Mukasa library"
         },
         {
             position: new THREE.Vector3(-40, 18, -118),
-            videoId: "tqYXjbZ5fMg",
-            title: "Goat sack",
-            description: "This is a goat's hide, during the Kebu medieval times it was used as a carrying suck. When an elder went to visit and there was leftover food, it would be parked in this suck for him to take back with him."
+            videoId: "AQCMzfdex5E", 
+            title: "Uganda Christian University",
+            description: "A glimpse of Uganda Christian University, the Ham Mukasa library"
         },
         {
             position: new THREE.Vector3(-40, 20, -207),
-            videoId: "s1CQOoOQm3Q",
-            title: "Kebu Horn",
-            description: "These horns are found in the neck of every Kebu man. They are for signaling danger or general mobilization depending on the pattern of how they are being blown."
+            videoId: "AQCMzfdex5E", 
+            title: "Uganda Christian University",
+            description: "A glimpse of Uganda Christian University, the Ham Mukasa library"
         },
         {
             position: new THREE.Vector3(-52, 19, 200),
-            videoId: "S2n8MTmksk",
-            title: "Kebu Pot",
-            description: "The pot is a very important commodity to the Kebu society and home. The Kebu people never used iron to cook. Clay pots were used for cooking, collecting water and preserving food itself."
+           videoId: "AQCMzfdex5E", 
+            title: "Uganda Christian University",
+            description: "A glimpse of Uganda Christian University, the Ham Mukasa library"
         },
         {
             position: new THREE.Vector3(-40, 18, -30),
-            videoId: "nFYNBaL4xlU",
-            title: "Miya Skin",
-            description: "This is a Miya cat skin, it is one of the Kebu people's artifacts. It used to be used to ward away epidemics that broke out during medieval times. It used to be waved by the chief as he cast out sickness from his land."
+           videoId: "AQCMzfdex5E", 
+            title: "Uganda Christian University",
+            description: "A glimpse of Uganda Christian University, the Ham Mukasa library"
         },
         {
             position: new THREE.Vector3(-5, 16, -336),
-            videoId: "z6iG4wFgZfc",
-            title: "Enanga",
-            description: "Is an instrument that the Batwa used to play after a succfesful hunt. it is made of a flattended wooden slade with nylon or animal skin cut into stings and tied from end to end horizontally to produce different pitches when played. "
+            videoId: "AQCMzfdex5E", 
+            title: "Uganda Christian University",
+            description: "A glimpse of Uganda Christian University, the Ham Mukasa library"
         },
         {
             position: new THREE.Vector3(-40, 20, -65),
-            videoId: "UunPcymtaaA",
-            title: "Ogorogogo",
-            description: "This is a farming tool used by the Ukebhu for harrowing, it is called Agorogoro. It normally has got an iron fixed on its sharp end."
+            videoId: "AQCMzfdex5E", 
+            title: "Uganda Christian University",
+            description: "A glimpse of Uganda Christian University, the Ham Mukasa library"
         },
         {
             position: new THREE.Vector3(-52, 16, -435),
-            videoId: "xH767Bwc3Q4",
-            title: "Shaker",
-            description: "This is a shaker made out of calabash. It is used to evoc spirits of the ancestors. But now its used as a music instrument."
+            videoId: "AQCMzfdex5E", 
+            title: "Uganda Christian University",
+            description: "A glimpse of Uganda Christian University, the Ham Mukasa library"
         },
         {
             position: new THREE.Vector3(211, 17, -40),
-            videoId: "LV0V9z2154w",
-            title: "Sticks",
-            description: "These are sticks called Imirosho used by the Batwa in cultural dances and performances. They are used for drumming or as dance props."
+            videoId: "AQCMzfdex5E", 
+            title: "Uganda Christian University",
+            description: "A glimpse of Uganda Christian University, the Ham Mukasa library"
         },
         {
             position: new THREE.Vector3(-5, 14, -435),
-            videoId: "llJWRdh4zIc",
-            title: "Ikumbi (Thumb Piano)",
-            description: "This is a wooden box instrument found in the Batwa community like in most Ugandan cultures, it has a box wooden body and metal pokes tied to its neck in diferent pitches. Its played using both thumb fingers to create sound."
+            videoId: "AQCMzfdex5E", 
+            title: "Uganda Christian University",
+            description: "A glimpse of Uganda Christian University, the Ham Mukasa library"
         },
         {
             position: new THREE.Vector3(-52, 12, -336),
-            videoId: "llJWRdh4zIc",
-            title: "Thumb Piano",
-            description: "The Lukembe is one of the musical instrumenets of the Ukebhu, it is made of a sqaure wooden box and metallic pokes tided to its neck with different pitches. Lekembe is played using two finger thumbs by strumming the pokes rythmically to create sound."
+           videoId: "AQCMzfdex5E", 
+            title: "Uganda Christian University",
+            description: "A glimpse of Uganda Christian University, the Ham Mukasa library"
         },
         {
             position: new THREE.Vector3(-52, 12, 107),
-            videoId: "j1kV5R-UE_Y",
-            title: "Vaccum",
-            description: "This is a food warmer called Abhoro. It is used to keep food fresh and warm."
+            videoId: "AQCMzfdex5E", 
+            title: "Uganda Christian University",
+            description: "A glimpse of Uganda Christian University, the Ham Mukasa library"
         },
         {
             position: new THREE.Vector3(10, -5, -115),
-            videoId: "nTJoZsTIsZg",
-            title: "Umunahi",
-            description: "This is an istrument found among the Batwa, it is used for playing music while telling stories at the fire place. It is made of out of  Macademia nut tree branches and a gourd at the bottom to creat low end sound."
+            videoId: "AQCMzfdex5E", 
+            title: "Uganda Christian University",
+            description: "A glimpse of Uganda Christian University, the Ham Mukasa library"
         }
 ]
 
 const pictureHotspotData = [
     {
         position: new THREE.Vector3(-255, 45, -35), 
-        videoId: "A9P7MDe9xfQ", 
-        title: "Sembagare",
-        description: "Sembagare"
+        videoId: "AQCMzfdex5E", 
+        title: "Uganda Christian University",
+        description: "A glimpse of Uganda Christian University"
     },
     {
         position: new THREE.Vector3(-255, 45, -250), 
-        videoId: "2YNjtXqCO_Q",
-        title: "Paskazia Nyiragaromba",
-        description: "Paskazia Nyiragaromba"
+        videoId: "AQCMzfdex5E", 
+        title: "Uganda Christian University",
+        description: "A glimpse of Uganda Christian University"
     },
     {
         position: new THREE.Vector3(-255, 45, -470), 
-        videoId: "VXkjMivVNc8", 
-        title: "Birara Dance",
-        description: "Birara Dance"
+        videoId: "AQCMzfdex5E", 
+        title: "Uganda Christian University",
+        description: "A glimpse of Uganda Christian University"
     },
     {
         position: new THREE.Vector3(185, 0, -93), 
-        videoId: "SV6mbdtQ_qw", 
-        title: "The fire making stick",
-        description: "The fire making stick"
+        videoId: "AQCMzfdex5E", 
+        title: "Uganda Christian University",
+        description: "A glimpse of Uganda Christian University"
     },
     {
         position: new THREE.Vector3(10, 50, -115), 
-        videoId: "VGMpnwDfsl4", 
-        title: "Sembagare assembling",
-        description: "Sembagare assembling"
+        videoId: "AQCMzfdex5E", 
+        title: "Uganda Christian University",
+        description: "A glimpse of Uganda Christian University"
     },
     {
         position: new THREE.Vector3(210, 0, -195), 
-        videoId: "z6iG4wFgZfc", 
-        title: "Enanga",
-        description: "Enanga"
+        videoId: "AQCMzfdex5E", 
+        title: "Uganda Christian University",
+        description: "A glimpse of Uganda Christian University"
     },
     {
         position: new THREE.Vector3(206, 40, -330), 
-        videoId: "llJWRdh4zIc", 
-        title: "Thumb Piano",
-        description: "Thumb Piano"
+        videoId: "AQCMzfdex5E", 
+        title: "Uganda Christian University",
+        description: "A glimpse of Uganda Christian University"
     },
     {
         position: new THREE.Vector3(90, 20, -520),
-        videoId: "i78wqPZQfb0", 
-        title: "Seeke",
-        description: "Seeke"
+        videoId: "AQCMzfdex5E", 
+        title: "Uganda Christian University",
+        description: "A glimpse of Uganda Christian University"
     }
 ];
 
