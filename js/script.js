@@ -217,7 +217,7 @@ controller1.addEventListener('selectstart', (event) => {
 //desktop controls
 const moveSpeed = 30;
 const lookSpeed = 0.002;
-//const verticalLookLimit = Math.PI / 3; // Limit vertical look angle
+const verticalLookLimit = Math.PI / 3; // Limit vertical look angle
 
 // Movement state
 const movement = {
@@ -228,7 +228,6 @@ const movement = {
     up: false,
     down: false
 };
-
 
 // Mouse movement variables
 let isMouseLocked = false;
@@ -243,7 +242,8 @@ function setupMouseLock() {
                                        canvas.webkitRequestPointerLock;
             canvas.requestPointerLock();
             reminder.style.display = 'block';
-            reminder.innerHTML = 'Press <b>ESC</b> on your keyBoard to return the pointer'}
+            reminder.innerHTML = 'Press <b>ESC</b> on your keyBoard to return the pointer'
+        }
     });
 
     document.addEventListener('pointerlockchange', lockChangeAlert, false);
@@ -278,11 +278,9 @@ function onMouseMove(e) {
 
     // Horizontal rotation (left/right)
     camera.rotation.y -= movementX * lookSpeed;
-    camera.rotation.x += movementY * lookSpeed;
-
 
     // Limit vertical rotation to prevent over-rotation
-    //camera.rotation.x = Math.max(-verticalLookLimit, Math.min(verticalLookLimit, camera.rotation.x));
+    camera.rotation.x = Math.max(-verticalLookLimit, Math.min(verticalLookLimit, camera.rotation.x));
 }
 
 // Keyboard controls - ARROW KEYS ONLY
@@ -344,7 +342,6 @@ function updateMovement(delta) {
 
 let controls;
 function addControls() {
-    
     const container = document.querySelector('.canvas');
     let options = {
         delta: 0.75,           // coefficient of movement
@@ -354,7 +351,7 @@ function addControls() {
         hitTest: true,         // stop on hitting objects
         hitTestDistance: 40    // distance to test for hit
     }
-    controls = new TouchControls(container.parentNode, camera, options);
+    controls = new TouchControls(container, camera, options);
     controls.setPosition(84, 34, -10);
     controls.addToScene(scene);
     
@@ -375,11 +372,11 @@ function initControls() {
     const gltfLoader = new GLTFLoader(loadingManager);
 
     gltfLoader.load(
-        'https://storage.googleapis.com/pearl-artifacts-cdn/museum_model.gltf',
+        './assets/museum_model.gltf',
         function (gltf) {
             const museum = gltf.scene;
             museum.position.set(0, 0, 0);
-            museum.scale.set(1.5, 1.5, 1.5);
+            museum.scale.set(2, 2, 2);
             scene.add(museum);
 
             createExhibitHotspots();
@@ -396,22 +393,8 @@ function initControls() {
     );
 }
 
-
 if(isMobile) {
     loadMuseum();
-    function flashReminder(){
-      let reminder = document.getElementById('reminder');
-    reminder.style.display = 'block';
-    reminder.innerHTML = 'Scroll down on the page to get navigation panels'
-     setTimeout(() => {
-        reminder.style.display = 'none';
-    }, 2000);
-}
-  
-
-flashReminder();
-setInterval(flashReminder, 10000);
-
 }
 else{
     new RGBELoader()
@@ -437,7 +420,6 @@ let currentExhibit = null;
 
 
 const raycaster = new THREE.Raycaster( new THREE.Vector3());
-const tempMatrix = new THREE.Matrix4();
 
 const exhibitUI = document.createElement('div');
 exhibitUI.id = 'exhibit-ui';
@@ -460,11 +442,11 @@ exhibitUI.appendChild(closeButton);
 
 function createPictureHotspots() {
     pictureHotspotData.forEach((data) => {
-        const geometry = new THREE.SphereGeometry(12, 12, 12);
+        const geometry = new THREE.SphereGeometry(13, 24, 24);
         const material = new THREE.MeshBasicMaterial({
-            color: 0xffffff,
+            color: 0x0000ff,
             transparent: true,
-            opacity: 1// change back after adjusting
+            opacity: 0 // change back after adjusting
         });
         const pictureFrame = new THREE.Mesh(geometry, material);
         pictureFrame.position.copy(data.position);
@@ -487,11 +469,11 @@ function createExhibitHotspots() {
     
     // Create 16 invisible hotspots
     hotspotData.forEach((data, index) => {
-        const geometry = new THREE.SphereGeometry(12, 12, 12);
+        const geometry = new THREE.SphereGeometry(13, 24, 24);
         const material = new THREE.MeshBasicMaterial({
-            color: 0xffffff,
+            color: 0xff0000,
             transparent: true,
-            opacity: 1// Completely invisible
+            opacity: 0 // Completely invisible
         });
         const sphere = new THREE.Mesh(geometry, material);
         sphere.position.copy(data.position);
@@ -752,7 +734,7 @@ const instructionContent = document.getElementById('instruction-content');
     });
 //home button functionality
 homeButton.addEventListener('click', () => {
-        window.location.href = 'https://ucu.ac.ug/';
+        window.location.href = 'https://pearlrhythmfoundation.org/category/art-archive/';
     });
 
 //hotspot data
@@ -915,6 +897,7 @@ function animate(){
         controls.update();
     }
     renderer.render(scene, camera);
+
     renderer.setAnimationLoop(animate);
 }
 
