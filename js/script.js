@@ -3,6 +3,8 @@ import * as THREE from 'three';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'; 
 import TouchControls from './TouchControls.js'
+import { XRControllerModelFactory } from 'https://unpkg.com/three@0.154/examples/jsm/webxr/XRControllerModelFactory.js';
+
 
 //device identification
 const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
