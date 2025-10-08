@@ -758,97 +758,97 @@ homeButton.addEventListener('click', () => {
 //hotspot data
 const hotspotData = [
         {
-            position: new THREE.Vector3(-40, 18, -165),
+            position: new THREE.Vector3(0, 0, 0),
             videoId: "AQCMzfdex5E", 
             title: "Uganda Christian University",
             description: "A glimpse of Uganda Christian University, the Ham Mukasa library"
         },
         {
-            position: new THREE.Vector3(-100, -4, -500),
+            position: new THREE.Vector3(-10, 0, 0),
             videoId: "AQCMzfdex5E", 
             title: "Uganda Christian University",
             description: "A glimpse of Uganda Christian University, the Ham Mukasa library"
         },
         {
-            position: new THREE.Vector3(-100, 40, -510),
+            position: new THREE.Vector3(-10, 0, 0),
             videoId: "AQCMzfdex5E", 
             title: "Uganda Christian University",
             description: "A glimpse of Uganda Christian University, the Ham Mukasa library"
         },
         {
-            position: new THREE.Vector3(-100, 90, -515),
+            position: new THREE.Vector3(-10, 0, 0),
            videoId: "AQCMzfdex5E", 
             title: "Uganda Christian University",
             description: "A glimpse of Uganda Christian University, the Ham Mukasa library"
         },
         {
-            position: new THREE.Vector3(-40, 18, -118),
+            position: new THREE.Vector3(-10, 0, 00),
             videoId: "AQCMzfdex5E", 
             title: "Uganda Christian University",
             description: "A glimpse of Uganda Christian University, the Ham Mukasa library"
         },
         {
-            position: new THREE.Vector3(-40, 20, -207),
+            position: new THREE.Vector3(-10, 0, 0),
             videoId: "AQCMzfdex5E", 
             title: "Uganda Christian University",
             description: "A glimpse of Uganda Christian University, the Ham Mukasa library"
         },
         {
-            position: new THREE.Vector3(-52, 19, 200),
+            position: new THREE.Vector3(-10, 0, 0),
            videoId: "AQCMzfdex5E", 
             title: "Uganda Christian University",
             description: "A glimpse of Uganda Christian University, the Ham Mukasa library"
         },
         {
-            position: new THREE.Vector3(-40, 18, -30),
+            position: new THREE.Vector3(-10, 0, 0),
            videoId: "AQCMzfdex5E", 
             title: "Uganda Christian University",
             description: "A glimpse of Uganda Christian University, the Ham Mukasa library"
         },
         {
-            position: new THREE.Vector3(-5, 16, -336),
+            position: new THREE.Vector3(-10, 0, 0),
             videoId: "AQCMzfdex5E", 
             title: "Uganda Christian University",
             description: "A glimpse of Uganda Christian University, the Ham Mukasa library"
         },
         {
-            position: new THREE.Vector3(-40, 20, -65),
+            position: new THREE.Vector3(-10, 0, 0),
             videoId: "AQCMzfdex5E", 
             title: "Uganda Christian University",
             description: "A glimpse of Uganda Christian University, the Ham Mukasa library"
         },
         {
-            position: new THREE.Vector3(-52, 16, -435),
+            position: new THREE.Vector3(-10, 0, 0),
             videoId: "AQCMzfdex5E", 
             title: "Uganda Christian University",
             description: "A glimpse of Uganda Christian University, the Ham Mukasa library"
         },
         {
-            position: new THREE.Vector3(211, 17, -40),
+            position: new THREE.Vector3(-10, 0, 0),
             videoId: "AQCMzfdex5E", 
             title: "Uganda Christian University",
             description: "A glimpse of Uganda Christian University, the Ham Mukasa library"
         },
         {
-            position: new THREE.Vector3(-5, 14, -435),
+            position: new THREE.Vector3(-10, 0, 0),
             videoId: "AQCMzfdex5E", 
             title: "Uganda Christian University",
             description: "A glimpse of Uganda Christian University, the Ham Mukasa library"
         },
         {
-            position: new THREE.Vector3(-52, 12, -336),
+            position: new THREE.Vector3(-10, 0, 0),
            videoId: "AQCMzfdex5E", 
             title: "Uganda Christian University",
             description: "A glimpse of Uganda Christian University, the Ham Mukasa library"
         },
         {
-            position: new THREE.Vector3(-52, 12, 107),
+            position: new THREE.Vector3(-10, 0, 0),
             videoId: "AQCMzfdex5E", 
             title: "Uganda Christian University",
             description: "A glimpse of Uganda Christian University, the Ham Mukasa library"
         },
         {
-            position: new THREE.Vector3(10, -5, -115),
+            position: new THREE.Vector3(-10, 0, 0),
             videoId: "AQCMzfdex5E", 
             title: "Uganda Christian University",
             description: "A glimpse of Uganda Christian University, the Ham Mukasa library"
@@ -857,49 +857,49 @@ const hotspotData = [
 
 const pictureHotspotData = [
     {
-        position: new THREE.Vector3(-255, 45, -35), 
+        position: new THREE.Vector3(-10, 0, 0), 
         videoId: "AQCMzfdex5E", 
         title: "Uganda Christian University",
         description: "A glimpse of Uganda Christian University"
     },
     {
-        position: new THREE.Vector3(-255, 45, -250), 
+        position: new THREE.Vector3(0, 10, 0), 
         videoId: "AQCMzfdex5E", 
         title: "Uganda Christian University",
         description: "A glimpse of Uganda Christian University"
     },
     {
-        position: new THREE.Vector3(-255, 45, -470), 
+        position: new THREE.Vector3(0, 10, 0), 
         videoId: "AQCMzfdex5E", 
         title: "Uganda Christian University",
         description: "A glimpse of Uganda Christian University"
     },
     {
-        position: new THREE.Vector3(185, 0, -93), 
+        position: new THREE.Vector3(0, 10, 0), 
         videoId: "AQCMzfdex5E", 
         title: "Uganda Christian University",
         description: "A glimpse of Uganda Christian University"
     },
     {
-        position: new THREE.Vector3(10, 50, -115), 
+        position: new THREE.Vector3(0, 10, 0), 
         videoId: "AQCMzfdex5E", 
         title: "Uganda Christian University",
         description: "A glimpse of Uganda Christian University"
     },
     {
-        position: new THREE.Vector3(210, 0, -195), 
+        position: new THREE.Vector3(0, 10, 0), 
         videoId: "AQCMzfdex5E", 
         title: "Uganda Christian University",
         description: "A glimpse of Uganda Christian University"
     },
     {
-        position: new THREE.Vector3(206, 40, -330), 
+        position: new THREE.Vector3(0, 10, 0), 
         videoId: "AQCMzfdex5E", 
         title: "Uganda Christian University",
         description: "A glimpse of Uganda Christian University"
     },
     {
-        position: new THREE.Vector3(90, 20, -520),
+        position: new THREE.Vector3(0, 10, 0),
         videoId: "AQCMzfdex5E", 
         title: "Uganda Christian University",
         description: "A glimpse of Uganda Christian University"
