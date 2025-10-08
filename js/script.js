@@ -14,7 +14,7 @@ const scene = new THREE.Scene();
 
 //setting up the camera
 const aspectRatio = window.innerWidth/window.innerHeight;
-const camera = new THREE.PerspectiveCamera(9 , aspectRatio, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(45 , aspectRatio, 0.1, 1000);
 camera.position.set(84, 45, 280);
 
 //setting upvthe canvas
@@ -341,7 +341,7 @@ function initControls() {
         function (gltf) {
             const museum = gltf.scene;
             museum.position.set(0, 0, 0);
-            museum.scale.set(1.7, 1.7, 1.7);
+            museum.scale.set(1.5, 1.5, 1.5);
             scene.add(museum);
 
             createExhibitHotspots();
@@ -421,9 +421,9 @@ exhibitUI.appendChild(closeButton);
 
 function createPictureHotspots() {
     pictureHotspotData.forEach((data) => {
-        const geometry = new THREE.SphereGeometry(9, 20, 20);
+        const geometry = new THREE.SphereGeometry(5, 16, 16);
         const material = new THREE.MeshBasicMaterial({
-            color: 0x0000ff,
+            color: 0xffffff,
             transparent: true,
             opacity: 0.5// change back after adjusting
         });
@@ -448,9 +448,9 @@ function createExhibitHotspots() {
     
     // Create 16 invisible hotspots
     hotspotData.forEach((data, index) => {
-        const geometry = new THREE.SphereGeometry(9, 20, 20);
+        const geometry = new THREE.SphereGeometry(5, 16, 16);
         const material = new THREE.MeshBasicMaterial({
-            color: 0xff0000,
+            color: 0xffffff,
             transparent: true,
             opacity: 0.5// Completely invisible
         });
