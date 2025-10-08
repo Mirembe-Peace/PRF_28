@@ -67,10 +67,10 @@ const loadingManager = new THREE.LoadingManager(
 
 //controls
 //VR controls
+const controllerModelFactory = new controllerModelFactory();
 const controller1 = renderer.xr.getController(0);
 scene.add(controller1);
 
-const controllerModelFactory = new controllerModelFactory();
 const controllerGrip1 = renderer.xr.getControllerGrip(0);
 controllerGrip1.add(controllerModelFactory.createControllerModel(controllerGrip1));
 scene.add(controllerGrip1);
