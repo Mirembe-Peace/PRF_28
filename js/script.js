@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { VRButton } from 'three/examples/jsm/webxr/VRButton'
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'; 
 import TouchControls from './TouchControls.js'
@@ -11,17 +12,19 @@ const scene = new THREE.Scene();
 
 //setting up the camera
 const aspectRatio = window.innerWidth/window.innerHeight;
-const camera = new THREE.PerspectiveCamera(90, aspectRatio, 0.1, 1000);
-camera.position.set(84, 45, 288);
+const camera = new THREE.PerspectiveCamera(9 , aspectRatio, 0.1, 1000);
+camera.position.set(84, 45, 280);
 
 //setting upvthe canvas
 const canvas = document.querySelector('.canvas');
 
 //setting up the renderer
 const renderer = new THREE.WebGLRenderer({canvas: canvas});
+renderer.xr.enabled = true;
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(window.devicePixelRatio);
 document.body.appendChild(renderer.domElement);
+document.body.appendChild(VRButton.createButton(renderer));
 
 
 //lights
@@ -63,6 +66,115 @@ const loadingManager = new THREE.LoadingManager(
 );
 
 //controls
+//VR controls
+const controller1 = renderer.xr.getController(0);
+scene.add(controller1);
+
+const controllerModelFactory = new XRControllerModelFactory();
+const controllerGrip1 = renderer.xr.getControllerGrip(0);
+controllerGrip1.add(controllerModelFactory.createControllerModel(controllerGrip1));
+scene.add(controllerGrip1);
+
+// Add controller input handling
+controller1.addEventListener('selectstart', onSelectStart);
+controller1.addEventListener('selectend', onSelectEnd);
+controller1.addEventListener('squeezestart', onSqueezeStart);
+controller1.addEventListener('squeezeend', onSqueezeEnd);
+
+// If you have a second controller
+const controller2 = renderer.xr.getController(1);
+scene.add(controller2);
+
+const controllerGrip2 = renderer.xr.getControllerGrip(1);
+controllerGrip2.add(controllerModelFactory.createControllerModel(controllerGrip2));
+scene.add(controllerGrip2);
+
+controller2.addEventListener('selectstart', onSelectStart);
+controller2.addEventListener('selectend', onSelectEnd);
+controller2.addEventListener('squeezestart', onSqueezeStart);
+controller2.addEventListener('squeezeend', onSqueezeEnd);
+
+// Controller input handlers
+function onSelectStart(event) {
+    // Replace mouse click down functionality
+    // Example: if you had mouse down for shooting, place that code here
+    console.log('Trigger pressed - replaces mouse click');
+    
+    // If you need to know which controller
+    const controller = event.target;
+    // controller.hand will be 0 (left) or 1 (right) if using hand tracking
+}
+
+function onSelectEnd(event) {
+    // Replace mouse click release functionality
+    console.log('Trigger released');
+}
+
+function onSqueezeStart(event) {
+    // Replace keyboard key down (e.g., spacebar, shift, etc.)
+    console.log('Grip pressed - replaces keyboard key');
+}
+
+function onSqueezeEnd(event) {
+    // Replace keyboard key release
+    console.log('Grip released');
+}
+
+// For thumbstick/thumbpad movement (common in VR games)
+controller1.addEventListener('thumbstickmoved', onThumbstickMoved);
+controller2.addEventListener('thumbstickmoved', onThumbstickMoved);
+
+function onThumbstickMoved(event) {
+    const { x, y } = event.data;
+    
+    // Replace keyboard movement (WASD/arrow keys)
+    // Example: move character or camera based on thumbstick input
+    if (Math.abs(x) > 0.1 || Math.abs(y) > 0.1) {
+        // Forward/backward movement (replaces W/S keys)
+        const moveZ = -y;
+        // Left/right movement (replaces A/D keys)
+        const moveX = x;
+        
+        // Apply movement to your camera or character
+        // camera.translateX(moveX * moveSpeed);
+        // camera.translateZ(moveZ * moveSpeed);
+    }
+}
+
+// For button inputs (A, B, X, Y buttons on Oculus/other controllers)
+controller1.addEventListener('buttonpress', onButtonPress);
+controller1.addEventListener('buttonrelease', onButtonRelease);
+controller2.addEventListener('buttonpress', onButtonPress);
+controller2.addEventListener('buttonrelease', onButtonRelease);
+
+function onButtonPress(event) {
+    const button = event.data;
+    // button can be 'thumbstick', 'trigger', 'squeeze', 'touchpad', 'button-a', 'button-b', etc.
+    
+    switch(button) {
+        case 'button-a':
+            // Replace specific keyboard key (e.g., spacebar for jump)
+            break;
+        case 'button-b':
+            // Replace another keyboard function
+            break;
+        // Add more cases as needed
+    }
+}
+
+function onButtonRelease(event) {
+    // Handle button releases
+}
+
+// If you're using PointerEvents for mouse interaction, you might want to sync:
+controller1.addEventListener('selectstart', (event) => {
+    // Simulate mouse down on your interactive objects
+    const intersects = getControllerIntersections(controller1);
+    if (intersects.length > 0) {
+        // Dispatch synthetic mouse event or call your existing click handler
+        intersects[0].object.dispatchEvent(new MouseEvent('mousedown'));
+    }
+});
 
 //desktop controls
 const moveSpeed = 30;
@@ -222,7 +334,7 @@ function initControls() {
     const gltfLoader = new GLTFLoader(loadingManager);
 
     gltfLoader.load(
-        'https://storage.googleapis.com/pearl-artifacts-cdn/museum_test_1blend.gltf',
+        'https://storage.googleapis.com/pearl-artifacts-cdn/scene.gltf',
         function (gltf) {
             const museum = gltf.scene;
             museum.position.set(0, 0, 0);
@@ -248,7 +360,7 @@ if(isMobile) {
 }
 else{
     new RGBELoader()
-    .setPath('https://storage.googleapis.com/pearl-artifacts-cdn/')
+    .setPath('./images/')
     .load('environment.hdr', function (texture){
         texture.mapping = THREE.EquirectangularReflectionMapping;
         scene.background = texture;
@@ -747,7 +859,7 @@ function animate(){
         controls.update();
     }
     renderer.render(scene, camera);
-    requestAnimationFrame(animate);
+    renderer.setAnimationLoop(animate);
 }
 
 animate();
