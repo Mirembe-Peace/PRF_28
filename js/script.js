@@ -70,8 +70,25 @@ const loadingManager = new THREE.LoadingManager(
 //controls
 //VR controls
 const controllerModelFactory = new XRControllerModelFactory();
+
+//initializing the controllers
 const controller1 = renderer.xr.getController(0);
 scene.add(controller1);
+
+
+const controller2 = renderer.xr.getController(1);
+scene.add(controller2);
+
+// Create a ray line (visual pointer)
+const geometry = new THREE.BufferGeometry().setFromPoints([
+  new THREE.Vector3(0, 0, 0),
+  new THREE.Vector3(0, 0, -1)
+]);
+const line = new THREE.Line(geometry, new THREE.LineBasicMaterial({ color: 0xff0000 }));
+
+controller1.add(line.clone());
+controller2.add(line.clone());
+
 
 const controllerGrip1 = renderer.xr.getControllerGrip(0);
 controllerGrip1.add(controllerModelFactory.createControllerModel(controllerGrip1));
@@ -83,9 +100,6 @@ controller1.addEventListener('selectend', onSelectEnd);
 controller1.addEventListener('squeezestart', onSqueezeStart);
 controller1.addEventListener('squeezeend', onSqueezeEnd);
 
-// If you have a second controller
-const controller2 = renderer.xr.getController(1);
-scene.add(controller2);
 
 const controllerGrip2 = renderer.xr.getControllerGrip(1);
 controllerGrip2.add(controllerModelFactory.createControllerModel(controllerGrip2));
@@ -98,99 +112,35 @@ controller2.addEventListener('squeezeend', onSqueezeEnd);
 
 // Controller input handlers
 function onSelectStart(event) {
-    // Replace mouse click down functionality
-    // Example: if you had mouse down for shooting, place that code here
-    console.log('Trigger pressed - replaces mouse click');
-    
-    // If you need to know which controller
+
     const controller = event.target;
-    // controller.hand will be 0 (left) or 1 (right) if using hand tracking
-}
+    tempMatrix.identity().extractRotation(controller.matrixWorld);
+    raycaster.ray.origin.setFromMatrixPosition(controller.matrixWorld);
+    raycaster.ray.direction.set(0, 0, -1).applyMatrix4(tempMatrix);
 
-function onSelectEnd(event) {
-    // Replace mouse click release functionality
-    console.log('Trigger released');
-}
-
-function onSqueezeStart(event) {
-    // Replace keyboard key down (e.g., spacebar, shift, etc.)
-    console.log('Grip pressed - replaces keyboard key');
-}
-
-function onSqueezeEnd(event) {
-    // Replace keyboard key release
-    console.log('Grip released');
-}
-
-// For thumbstick/thumbpad movement (common in VR games)
-controller1.addEventListener('thumbstickmoved', onThumbstickMoved);
-controller2.addEventListener('thumbstickmoved', onThumbstickMoved);
-
-function onThumbstickMoved(event) {
-    const { x, y } = event.data;
-    
-    // Replace keyboard movement (WASD/arrow keys)
-    // Example: move character or camera based on thumbstick input
-    if (Math.abs(x) > 0.1 || Math.abs(y) > 0.1) {
-        // Forward/backward movement (replaces W/S keys)
-        const moveZ = -y;
-        // Left/right movement (replaces A/D keys)
-        const moveX = x;
-        
-         camera.translateX(moveX * moveSpeed);
-         camera.translateZ(moveZ * moveSpeed);
-    }
-}
-
-// For button inputs (A, B, X, Y buttons on Oculus/other controllers)
-controller1.addEventListener('buttonpress', onButtonPress);
-controller1.addEventListener('buttonrelease', onButtonRelease);
-controller2.addEventListener('buttonpress', onButtonPress);
-controller2.addEventListener('buttonrelease', onButtonRelease);
-
-function onButtonPress(event) {
-    const button = event.data;
-    // button can be 'thumbstick', 'trigger', 'squeeze', 'touchpad', 'button-a', 'button-b', etc.
-    
-    switch(button) {
-        case 'button-a':
-            // Replace specific keyboard key (e.g., spacebar for jump)
-            break;
-        case 'button-b':
-            // Replace another keyboard function
-            break;
-        // Add more cases as needed
-    }
-}
-
-function onButtonRelease(event) {
-    // Handle button releases
-}
-
-// If you're using PointerEvents for mouse interaction, you might want to sync:
-controller1.addEventListener('selectstart', (event) => {
-    // Simulate mouse down on your interactive objects
-    const intersects = getControllerIntersections(controller1);
+    const intersects = raycaster.intersectObjects(scene.children);
     if (intersects.length > 0) {
-        // Dispatch synthetic mouse event or call your existing click handler
-        intersects[0].object.dispatchEvent(new MouseEvent('mousedown'));
-    }
-});
+        const first = intersects[0].object;
+        first.material.color.set(0xff0000); // highlight on click
+        console.log("Hit:", first.name || "object");
+  }
 
-//desktop controls
-const moveSpeed = 30;
-const lookSpeed = 0.002;
-const verticalLookLimit = Math.PI / 3; // Limit vertical look angle
+    // // Replace mouse click down functionality
+    // // Example: if you had mouse down for shooting, place that code here
+    // console.log('Trigger pressed - replaces mouse click');
+    
+    // // If you need to know which controller
+    // const controller = event.target;
+    // // controller.hand will be 0 (left) or 1 (right) if using hand tracking
+}
 
-// Movement state
-const movement = {
-    forward: false,
-    backward: false,
-    left: false,
-    right: false,
-    up: false,
-    down: false
-};
+function onSelectStartMove(event) {
+  const controller = event.target;
+  const dir = new THREE.Vector3(0, 0, -1);
+  dir.applyQuaternion(controller.quaternion);
+  camera.position.addScaledVector(dir, 0.2); // move forward
+}
+controller1.addEventListener('selectstart', onSelectStartMove);
 
 // Mouse movement variables
 let isMouseLocked = false;
@@ -244,7 +194,7 @@ function onMouseMove(e) {
 
 
     // Limit vertical rotation to prevent over-rotation
-    camera.rotation.x = Math.max(-verticalLookLimit, Math.min(verticalLookLimit, camera.rotation.x));
+    //camera.rotation.x = Math.max(-verticalLookLimit, Math.min(verticalLookLimit, camera.rotation.x));
 }
 
 // Keyboard controls - ARROW KEYS ONLY
@@ -399,6 +349,7 @@ let currentExhibit = null;
 
 
 const raycaster = new THREE.Raycaster( new THREE.Vector3());
+const tempMatrix = new THREE.Matrix4();
 
 const exhibitUI = document.createElement('div');
 exhibitUI.id = 'exhibit-ui';
@@ -425,7 +376,7 @@ function createPictureHotspots() {
         const material = new THREE.MeshBasicMaterial({
             color: 0xffffff,
             transparent: true,
-            opacity: 0.5// change back after adjusting
+            opacity: 1// change back after adjusting
         });
         const pictureFrame = new THREE.Mesh(geometry, material);
         pictureFrame.position.copy(data.position);
@@ -452,7 +403,7 @@ function createExhibitHotspots() {
         const material = new THREE.MeshBasicMaterial({
             color: 0xffffff,
             transparent: true,
-            opacity: 0.5// Completely invisible
+            opacity: 1// Completely invisible
         });
         const sphere = new THREE.Mesh(geometry, material);
         sphere.position.copy(data.position);
