@@ -26,10 +26,23 @@ class RotationPad {
 
         // Aligning pad:
         let canvas = container.getElementsByTagName('canvas')[0]
-        this.alignAndConfigPad(canvas)
+    
 
         // events
-        window.addEventListener('resize', () => {this.alignAndConfigPad(canvas)})
+        window.addEventListener('resize', () => {
+            this.regionData.width = this.region.offsetWidth;
+            this.regionData.height = this.region.offsetHeight;
+            this.regionData.radius = this.regionData.width / 2;
+            this.regionData.centerX = this.regionData.width / 2;
+            this.regionData.centerY = this.regionData.height / 2;
+            this.regionData.offset = utils.getOffset(this.region);
+            
+            this.handleData.width = this.handle.offsetWidth;
+            this.handleData.height = this.handle.offsetHeight;
+            this.handleData.radius = this.handleData.width / 2;
+            
+            this.regionData.radius = this.regionData.width / 2 - this.handleData.radius;
+        })
 
         // Mouse events:
         this.region.addEventListener('mousedown', (event) => {
@@ -76,9 +89,8 @@ class RotationPad {
     }
 
     alignAndConfigPad(canvas){
-        this.padElement.style.top = canvas.height + this.container.getBoundingClientRect().top
-                                    - this.region.offsetHeight - 10 + 'px'
-        this.padElement.style.left = canvas.offsetWidth - this.region.offsetWidth - 20 + 'px'
+        this.padElement.style.left = 'auto'
+        this.padElement.style.right = '20px'
 
         this.regionData.width = this.region.offsetWidth
         this.regionData.height = this.region.offsetHeight

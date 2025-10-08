@@ -204,8 +204,7 @@ function setupMouseLock() {
                                        canvas.webkitRequestPointerLock;
             canvas.requestPointerLock();
             reminder.style.display = 'block';
-            reminder.innerHTML = 'Press <b>ESC</b> on your keyBoard to return the pointer'
-        }
+            reminder.innerHTML = 'Press <b>ESC</b> on your keyBoard to return the pointer'}
     });
 
     document.addEventListener('pointerlockchange', lockChangeAlert, false);
@@ -240,6 +239,8 @@ function onMouseMove(e) {
 
     // Horizontal rotation (left/right)
     camera.rotation.y -= movementX * lookSpeed;
+    camera.rotation.x += movementY * lookSpeed;
+
 
     // Limit vertical rotation to prevent over-rotation
     camera.rotation.x = Math.max(-verticalLookLimit, Math.min(verticalLookLimit, camera.rotation.x));
@@ -304,6 +305,7 @@ function updateMovement(delta) {
 
 let controls;
 function addControls() {
+    
     const container = document.querySelector('.canvas');
     let options = {
         delta: 0.75,           // coefficient of movement
@@ -313,7 +315,7 @@ function addControls() {
         hitTest: true,         // stop on hitting objects
         hitTestDistance: 40    // distance to test for hit
     }
-    controls = new TouchControls(container, camera, options);
+    controls = new TouchControls(container.parentNode, camera, options);
     controls.setPosition(84, 34, -10);
     controls.addToScene(scene);
     
@@ -334,7 +336,7 @@ function initControls() {
     const gltfLoader = new GLTFLoader(loadingManager);
 
     gltfLoader.load(
-        'https://storage.googleapis.com/pearl-artifacts-cdn/scene.gltf',
+        'https://storage.googleapis.com/pearl-artifacts-cdn/museum_test_1blend.gltf',
         function (gltf) {
             const museum = gltf.scene;
             museum.position.set(0, 0, 0);
@@ -355,8 +357,22 @@ function initControls() {
     );
 }
 
+
 if(isMobile) {
     loadMuseum();
+    function flashReminder(){
+      let reminder = document.getElementById('reminder');
+    reminder.style.display = 'block';
+    reminder.innerHTML = 'Scroll down on the page to get navigation panels'
+     setTimeout(() => {
+        reminder.style.display = 'none';
+    }, 2000);
+}
+  
+
+flashReminder();
+setInterval(flashReminder, 10000);
+
 }
 else{
     new RGBELoader()
@@ -408,7 +424,7 @@ function createPictureHotspots() {
         const material = new THREE.MeshBasicMaterial({
             color: 0x0000ff,
             transparent: true,
-            opacity: 0 // change back after adjusting
+            opacity: 0// change back after adjusting
         });
         const pictureFrame = new THREE.Mesh(geometry, material);
         pictureFrame.position.copy(data.position);
@@ -435,7 +451,7 @@ function createExhibitHotspots() {
         const material = new THREE.MeshBasicMaterial({
             color: 0xff0000,
             transparent: true,
-            opacity: 0 // Completely invisible
+            opacity: 0// Completely invisible
         });
         const sphere = new THREE.Mesh(geometry, material);
         sphere.position.copy(data.position);
@@ -709,16 +725,19 @@ const hotspotData = [
         },
         {
             position: new THREE.Vector3(-100, -4, -500),
+            videoId: "MpxEd6ri7qQ",
             title: "Axe",
             description: "This is a male traditional hoe called Eligo. It is held by the chief to show leadersip and was used as awar tool."
         },
         {
             position: new THREE.Vector3(-100, 40, -510),
+            videoId: "kVSOh_rYe2M",
             title: "Bow",
-            description: "Bow model."
+            description: "Is an instrument for women, it is used to accompany songs that talk about teaching such as marriage and childbirth lessons to young girls."
         },
         {
             position: new THREE.Vector3(-100, 90, -515),
+            videoId: "a2r8nTdaZkM",
             title: "Elegu",
             description: "The is also called Eligo it is the female one held by the chiefs wife as a symbol of leadership also used in war.."
         },
@@ -754,6 +773,7 @@ const hotspotData = [
         },
         {
             position: new THREE.Vector3(-40, 20, -65),
+            videoId: "UunPcymtaaA",
             title: "Ogorogogo",
             description: "This is a farming tool used by the Ukebhu for harrowing, it is called Agorogoro. It normally has got an iron fixed on its sharp end."
         },
@@ -783,6 +803,7 @@ const hotspotData = [
         },
         {
             position: new THREE.Vector3(-52, 12, 107),
+            videoId: "j1kV5R-UE_Y",
             title: "Vaccum",
             description: "This is a food warmer called Abhoro. It is used to keep food fresh and warm."
         },
@@ -814,7 +835,7 @@ const pictureHotspotData = [
         description: "Birara Dance"
     },
     {
-        position: new THREE.Vector3(190, 0, -90), 
+        position: new THREE.Vector3(185, 0, -93), 
         videoId: "SV6mbdtQ_qw", 
         title: "The fire making stick",
         description: "The fire making stick"
@@ -826,7 +847,7 @@ const pictureHotspotData = [
         description: "Sembagare assembling"
     },
     {
-        position: new THREE.Vector3(170, 0, -125), 
+        position: new THREE.Vector3(210, 0, -195), 
         videoId: "z6iG4wFgZfc", 
         title: "Enanga",
         description: "Enanga"
