@@ -142,6 +142,94 @@ function onSelectStartMove(event) {
 }
 controller1.addEventListener('selectstart', onSelectStartMove);
 
+
+
+function onSelectEnd(event) {
+    // Replace mouse click release functionality
+    console.log('Trigger released');
+}
+
+function onSqueezeStart(event) {
+    // Replace keyboard key down (e.g., spacebar, shift, etc.)
+    console.log('Grip pressed - replaces keyboard key');
+}
+
+function onSqueezeEnd(event) {
+    // Replace keyboard key release
+    console.log('Grip released');
+}
+
+// For thumbstick/thumbpad movement (common in VR games)
+controller1.addEventListener('thumbstickmoved', onThumbstickMoved);
+controller2.addEventListener('thumbstickmoved', onThumbstickMoved);
+
+function onThumbstickMoved(event) {
+    const { x, y } = event.data;
+    
+    // Replace keyboard movement (WASD/arrow keys)
+    // Example: move character or camera based on thumbstick input
+    if (Math.abs(x) > 0.1 || Math.abs(y) > 0.1) {
+        // Forward/backward movement (replaces W/S keys)
+        const moveZ = -y;
+        // Left/right movement (replaces A/D keys)
+        const moveX = x;
+        
+         camera.translateX(moveX * moveSpeed);
+         camera.translateZ(moveZ * moveSpeed);
+    }
+}
+
+// For button inputs (A, B, X, Y buttons on Oculus/other controllers)
+controller1.addEventListener('buttonpress', onButtonPress);
+controller1.addEventListener('buttonrelease', onButtonRelease);
+controller2.addEventListener('buttonpress', onButtonPress);
+controller2.addEventListener('buttonrelease', onButtonRelease);
+
+function onButtonPress(event) {
+    const button = event.data;
+    // button can be 'thumbstick', 'trigger', 'squeeze', 'touchpad', 'button-a', 'button-b', etc.
+    
+    switch(button) {
+        case 'button-a':
+            // Replace specific keyboard key (e.g., spacebar for jump)
+            break;
+        case 'button-b':
+            // Replace another keyboard function
+            break;
+        // Add more cases as needed
+    }
+}
+
+function onButtonRelease(event) {
+    // Handle button releases
+}
+
+// If you're using PointerEvents for mouse interaction, you might want to sync:
+controller1.addEventListener('selectstart', (event) => {
+    // Simulate mouse down on your interactive objects
+    const intersects = getControllerIntersections(controller1);
+    if (intersects.length > 0) {
+        // Dispatch synthetic mouse event or call your existing click handler
+        intersects[0].object.dispatchEvent(new MouseEvent('mousedown'));
+    }
+});
+
+//desktop controls
+const moveSpeed = 30;
+const lookSpeed = 0.002;
+//const verticalLookLimit = Math.PI / 3; // Limit vertical look angle
+
+// Movement state
+const movement = {
+    forward: false,
+    backward: false,
+    left: false,
+    right: false,
+    up: false,
+    down: false
+};
+
+
 // Mouse movement variables
 let isMouseLocked = false;
 
