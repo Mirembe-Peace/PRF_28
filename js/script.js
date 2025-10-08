@@ -782,7 +782,7 @@ const hotspotData = [
             description: "A glimpse of Uganda Christian University, the Ham Mukasa library"
         },
         {
-            position: new THREE.Vector3(-10, 0, 00),
+            position: new THREE.Vector3(-10, 0, 0),
             videoId: "AQCMzfdex5E", 
             title: "Uganda Christian University",
             description: "A glimpse of Uganda Christian University, the Ham Mukasa library"
