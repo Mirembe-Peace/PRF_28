@@ -740,18 +740,18 @@ homeButton.addEventListener('click', () => {
 //hotspot data
 const hotspotData = [
         {
-            position: new THREE.Vector3(-40, 18, -165),
+            position: new THREE.Vector3(0, 0, 0),
             videoId: "ROmhZu5KGFs",
             title: "Ankle Rattles",
             description: "These are ankle rattles for wearing on the unkles to enhance the sound of music at celebrations like marriages and royal fuctions."
         },
         {
-            position: new THREE.Vector3(-100, -4, -500),
+            position: new THREE.Vector3(0, -10, 0),
             title: "Axe",
             description: "This is a male traditional hoe called Eligo. It is held by the chief to show leadersip and was used as awar tool."
         },
         {
-            position: new THREE.Vector3(-100, 40, -510),
+            position: new THREE.Vector3(0, -5, 0),
             title: "Bow",
             description: "Bow model."
         },
