@@ -460,7 +460,7 @@ exhibitUI.appendChild(closeButton);
 
 function createPictureHotspots() {
     pictureHotspotData.forEach((data) => {
-        const geometry = new THREE.SphereGeometry(5, 16, 16);
+        const geometry = new THREE.SphereGeometry(12, 12, 12);
         const material = new THREE.MeshBasicMaterial({
             color: 0xffffff,
             transparent: true,
@@ -487,7 +487,7 @@ function createExhibitHotspots() {
     
     // Create 16 invisible hotspots
     hotspotData.forEach((data, index) => {
-        const geometry = new THREE.SphereGeometry(5, 16, 16);
+        const geometry = new THREE.SphereGeometry(12, 12, 12);
         const material = new THREE.MeshBasicMaterial({
             color: 0xffffff,
             transparent: true,
@@ -758,7 +758,7 @@ homeButton.addEventListener('click', () => {
 //hotspot data
 const hotspotData = [
         {
-            position: new THREE.Vector3(0, 0, 0),
+            position: new THREE.Vector3(0, -10, 0),
             videoId: "AQCMzfdex5E", 
             title: "Uganda Christian University",
             description: "A glimpse of Uganda Christian University, the Ham Mukasa library"
@@ -857,13 +857,13 @@ const hotspotData = [
 
 const pictureHotspotData = [
     {
-        position: new THREE.Vector3(-10, 0, 0), 
+        position: new THREE.Vector3(0, -10, 0), 
         videoId: "AQCMzfdex5E", 
         title: "Uganda Christian University",
         description: "A glimpse of Uganda Christian University"
     },
     {
-        position: new THREE.Vector3(0, 10, 0), 
+        position: new THREE.Vector3(0, -10, 0), 
         videoId: "AQCMzfdex5E", 
         title: "Uganda Christian University",
         description: "A glimpse of Uganda Christian University"
