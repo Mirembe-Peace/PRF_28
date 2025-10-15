@@ -372,7 +372,7 @@ function initControls() {
     const gltfLoader = new GLTFLoader(loadingManager);
 
     gltfLoader.load(
-        'https://storage.googleapis.com/pearl-artifacts-cdn/scene.gltf',
+        'https://storage.googleapis.com/version_02_ucu/scene.gltf',
         function (gltf) {
             const museum = gltf.scene;
             museum.position.set(0, 0, 0);
