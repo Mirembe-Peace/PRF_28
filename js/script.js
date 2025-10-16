@@ -1,5 +1,5 @@
 import * as THREE from 'three';
- import { VRButton } from 'https://unpkg.com/three@0.154/examples/jsm/webxr/VRButton.js';
+import { VRButton } from 'https://unpkg.com/three@0.154/examples/jsm/webxr/VRButton.js';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'; 
 import TouchControls from './TouchControls.js'
@@ -372,7 +372,7 @@ function initControls() {
     const gltfLoader = new GLTFLoader(loadingManager);
 
     gltfLoader.load(
-        'https://storage.googleapis.com/version_02_ucu/scene.gltf',
+        'https://pub-85bfe948afdc4a338f5318e34cdd039f.r2.dev/scene.gltf',
         function (gltf) {
             const museum = gltf.scene;
             museum.position.set(0, 0, 0);
